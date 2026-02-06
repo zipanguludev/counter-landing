@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Counter — Count & Automate</title>
+<link rel="icon" type="image/png" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & VARIABLES ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #111118;
+  --bg-card: #16161f;
+  --bg-card-hover: #1c1c28;
+  --accent: #6C5CE7;
+  --accent-light: #a29bfe;
+  --accent-glow: rgba(108, 92, 231, 0.3);
+  --green: #00b894;
+  --green-glow: rgba(0, 184, 148, 0.25);
+  --orange: #fdcb6e;
+  --red: #e17055;
+  --text-primary: #f0f0f5;
+  --text-secondary: #8888a0;
+  --text-muted: #55556a;
+  --border: rgba(255,255,255,0.06);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --font: 'Outfit', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NOISE OVERLAY ===== */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ===== UTILITY ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== ANIMATED GRADIENT ORB ===== */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.4;
+  pointer-events: none;
+  animation: orbFloat 12s ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+  top: -100px; left: -100px;
+}
+
+.orb-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, var(--green) 0%, transparent 70%);
+  top: 200px; right: -150px;
+  animation-delay: -4s;
+}
+
+.orb-3 {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, var(--orange) 0%, transparent 70%);
+  bottom: -100px; left: 30%;
+  animation-delay: -8s;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -40px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 16px 0;
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  background: rgba(10, 10, 15, 0.7);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s;
+}
+
+nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.nav-logo-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.nav-logo span {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+  letter-spacing: 0.3px;
+}
+
+.nav-links a:hover { color: var(--text-primary); }
+
+.btn-download-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: white !important;
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-download-nav:hover {
+  background: var(--accent-light);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px var(--accent-glow);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.hamburger span {
+  width: 24px; height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero h1 {
+  font-size: clamp(42px, 5.5vw, 72px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+  animation: fadeUp 0.8s ease-out 0.1s both;
+}
+
+.hero h1 .gradient-text {
+  background: linear-gradient(135deg, var(--accent-light), var(--green), var(--orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin-bottom: 40px;
+  animation: fadeUp 0.8s ease-out 0.2s both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  animation: fadeUp 0.8s ease-out 0.3s both;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, var(--accent), #8b5cf6);
+  color: white;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.15));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-primary:hover::after { opacity: 1; }
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px var(--accent-glow);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 28px;
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  background: rgba(108, 92, 231, 0.06);
+}
+
+.hero-phone {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  animation: fadeUp 1s ease-out 0.4s both;
+}
+
+.phone-mockup {
+  position: relative;
+  width: 280px;
+}
+
+.phone-mockup img {
+  width: 100%;
+  border-radius: 32px;
+  box-shadow:
+    0 40px 80px rgba(0,0,0,0.5),
+    0 0 0 1px rgba(255,255,255,0.08),
+    0 0 80px var(--accent-glow);
+}
+
+.phone-float {
+  animation: phoneFloat 6s ease-in-out infinite;
+}
+
+@keyframes phoneFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== FEATURES CAROUSEL ===== */
+.features {
+  padding: 120px 0;
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent-light);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.section-title {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.section-subtitle {
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Feature Showcase */
+.feature-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.feature-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.feature-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature-item:nth-child(even) .feature-visual {
+  order: -1;
+}
+
+.feature-number {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--accent-light);
+  font-weight: 500;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.feature-title {
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.feature-desc {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  max-width: 420px;
+}
+
+.feature-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.feature-tag {
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  background: rgba(255,255,255,0.03);
+}
+
+.feature-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.feature-phone {
+  width: 240px;
+  position: relative;
+}
+
+.feature-phone img {
+  width: 100%;
+  border-radius: 28px;
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(255,255,255,0.06);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.feature-item:hover .feature-phone img {
+  transform: scale(1.03);
+}
+
+.feature-phone::before {
+  content: '';
+  position: absolute;
+  inset: -40px;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.15;
+  z-index: -1;
+  transition: opacity 0.5s;
+}
+
+.feature-item:hover .feature-phone::before { opacity: 0.25; }
+
+.feature-item:nth-child(1) .feature-phone::before { background: var(--accent); }
+.feature-item:nth-child(2) .feature-phone::before { background: var(--green); }
+.feature-item:nth-child(3) .feature-phone::before { background: var(--orange); }
+.feature-item:nth-child(4) .feature-phone::before { background: var(--red); }
+.feature-item:nth-child(5) .feature-phone::before { background: var(--accent-light); }
+.feature-item:nth-child(6) .feature-phone::before { background: var(--green); }
+.feature-item:nth-child(7) .feature-phone::before { background: var(--orange); }
+
+/* ===== HIGHLIGHTS (mini cards) ===== */
+.highlights {
+  padding: 100px 0;
+  position: relative;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.highlight-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.highlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.highlight-card:hover::before { opacity: 1; }
+.highlight-card:nth-child(1)::before { background: var(--accent); }
+.highlight-card:nth-child(2)::before { background: var(--green); }
+.highlight-card:nth-child(3)::before { background: var(--orange); }
+.highlight-card:nth-child(4)::before { background: var(--red); }
+.highlight-card:nth-child(5)::before { background: var(--accent-light); }
+.highlight-card:nth-child(6)::before { background: var(--green); }
+
+.highlight-card:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.highlight-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.highlight-card:nth-child(1) .highlight-icon { background: rgba(108,92,231,0.12); }
+.highlight-card:nth-child(2) .highlight-icon { background: rgba(0,184,148,0.12); }
+.highlight-card:nth-child(3) .highlight-icon { background: rgba(253,203,110,0.12); }
+.highlight-card:nth-child(4) .highlight-icon { background: rgba(225,112,85,0.12); }
+.highlight-card:nth-child(5) .highlight-icon { background: rgba(162,155,254,0.12); }
+.highlight-card:nth-child(6) .highlight-icon { background: rgba(0,184,148,0.12); }
+
+.highlight-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+
+.highlight-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ===== CTA ===== */
+.cta {
+  padding: 120px 0;
+  position: relative;
+}
+
+.cta-box {
+  position: relative;
+  padding: 80px;
+  border-radius: 32px;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(108,92,231,0.15), rgba(0,184,148,0.1));
+  border: 1px solid rgba(108,92,231,0.2);
+}
+
+.cta-box::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at 30% 40%, var(--accent-glow), transparent 50%),
+              radial-gradient(circle at 70% 60%, var(--green-glow), transparent 50%);
+  animation: ctaGlow 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ctaGlow {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+}
+
+.cta-box h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-box p {
+  font-size: 17px;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-google-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background: white;
+  color: #111;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.btn-google-play:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(255,255,255,0.15);
+}
+
+.btn-google-play svg {
+  width: 24px; height: 24px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+footer p {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+footer a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+footer a:hover { color: var(--accent-light); }
+
+/* ===== MOBILE ===== */
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .hero p { margin: 0 auto 32px; }
+  .hero-actions { justify-content: center; flex-wrap: wrap; }
+  .hero-phone { order: -1; }
+  .phone-mockup { width: 220px; }
+
+  .feature-item {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+    padding: 60px 0;
+  }
+
+  .feature-item:nth-child(even) .feature-visual { order: 0; }
+  .feature-visual { order: -1 !important; }
+  .feature-desc { margin: 0 auto 24px; }
+  .feature-tags { justify-content: center; }
+  .feature-phone { width: 200px; }
+
+  .highlights-grid { grid-template-columns: 1fr; }
+
+  .cta-box { padding: 48px 24px; }
+  .cta-buttons { flex-direction: column; align-items: center; }
+
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+
+  nav.open .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: rgba(10,10,15,0.95);
+    backdrop-filter: blur(20px);
+    padding: 24px;
+    gap: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero h1 { letter-spacing: -1px; }
+  .highlights-grid { gap: 12px; }
+  .highlight-card { padding: 24px; }
+}
+
+/* ===== SCROLL REVEAL (JS hook) ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="container">
+    <a href="#" class="nav-logo">
+      <img src="img/logo.png" alt="Counter Logo" class="nav-logo-img">
+      <span>Counter</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#highlights">Why Counter</a></li>
+      <li><a href="#download">Download</a></li>
+      <li>
+        <a href="https://play.google.com/store/apps/details?id=com.zipangulu.counter" class="btn-download-nav" target="_blank" rel="noopener">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Get the app
+        </a>
+      </li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <h1>
+          Count<br>
+          <span class="gradient-text">everything</span><br>
+          that matters.
+        </h1>
+        <p>
+          The smartest counter app for Android. Track habits, finances, goals, and more with automated actions, calculated views, and beautiful widgets.
+        </p>
+        <div class="hero-actions">
+          <a href="https://play.google.com/store/apps/details?id=com.zipangulu.counter" class="btn-primary" target="_blank" rel="noopener">
+            <svg width="20" height="20" aria-hidden="true" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0,0h40v40H0V0z"></path><g><path d="M19.7,19.2L4.3,35.3c0,0,0,0,0,0c0.5,1.7,2.1,3,4,3c0.8,0,1.5-0.2,2.1-0.6l0,0l17.4-9.9L19.7,19.2z" fill="#EA4335"></path><path d="M35.3,16.4L35.3,16.4l-7.5-4.3l-8.4,7.4l8.5,8.3l7.5-4.2c1.3-0.7,2.2-2.1,2.2-3.6C37.5,18.5,36.6,17.1,35.3,16.4z" fill="#FBBC04"></path><path d="M4.3,4.7C4.2,5,4.2,5.4,4.2,5.8v28.5c0,0.4,0,0.7,0.1,1.1l16-15.7L4.3,4.7z" fill="#4285F4"></path><path d="M19.8,20l8-7.9L10.5,2.3C9.9,1.9,9.1,1.7,8.3,1.7c-1.9,0-3.6,1.3-4,3c0,0,0,0,0,0L19.8,20z" fill="#34A853"></path></g></svg>
+            Download the app
+          </a>
+          <a href="#features" class="btn-secondary">
+            Explore features
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="hero-phone">
+        <div class="phone-mockup phone-float">
+          <img src="img/home.png" alt="Counter App Home Screen" loading="eager">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Features</span>
+      <h2 class="section-title">More than just a counter</h2>
+      <p class="section-subtitle">Powerful features designed to help you track, analyze, and automate anything you can count.</p>
+    </div>
+
+    <div class="feature-showcase">
+
+      <!-- 1. Homepage -->
+      <div class="feature-item">
+        <div class="feature-text">
+          <div class="feature-number">01</div>
+          <h3 class="feature-title">Organized at a glance</h3>
+          <p class="feature-desc">
+            Your counters, beautifully organized by category with color-coded cards. Increment or decrement directly from the home screen — no extra taps needed.
+          </p>
+          <div class="feature-tags">
+            <span class="feature-tag">Categories</span>
+            <span class="feature-tag">Quick Actions</span>
+            <span class="feature-tag">Search & Filter</span>
+          </div>
+        </div>
+        <div class="feature-visual">
+          <div class="feature-phone">
+            <img src="img/home.png" alt="Home Screen" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Detail -->
+      <div class="feature-item">
+        <div class="feature-text">
+          <div class="feature-number">02</div>
+          <h3 class="feature-title">Full control at your fingertips</h3>
+          <p class="feature-desc">
+            A dedicated detail screen with large display, quick-action buttons for common increments, and a custom keyboard for precise value entry.
+          </p>
+          <div class="feature-tags">
+            <span class="feature-tag">Quick Buttons</span>
+            <span class="feature-tag">Custom Keyboard</span>
+            <span class="feature-tag">Notes</span>
+          </div>
+        </div>
+        <div class="feature-visual">
+          <div class="feature-phone">
+            <img src="img/detail.png" alt="Counter Detail" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Create -->
+      <div class="feature-item">
+        <div class="feature-text">
+          <div class="feature-number">03</div>
+          <h3 class="feature-title">Fully customizable</h3>
+          <p class="feature-desc">
+            Set initial values, boundaries, step size, colors, categories, automated actions event based, and even define calculated "view" counters powered by algebraic formulas.
+          </p>
+          <div class="feature-tags">
+            <span class="feature-tag">Custom Colors</span>
+            <span class="feature-tag">Min / Max</span>
+            <span class="feature-tag">Views & Formulas</span>
+          </div>
+        </div>
+        <div class="feature-visual">
+          <div class="feature-phone">
+            <img src="img/create_counter.png" alt="Create Counter" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Statistics -->
+      <div class="feature-item">
+        <div class="feature-text">
+          <div class="feature-number">04</div>
+          <h3 class="feature-title">Deep analytics</h3>
+          <p class="feature-desc">
+            Track streaks, averages, trends, and peak hours. Filter by time range and visualize your data with interactive charts and detailed logs.
+          </p>
+          <div class="feature-tags">
+            <span class="feature-tag">Charts</span>
+            <span class="feature-tag">Streaks</span>
+            <span class="feature-tag">Trends</span>
+          </div>
+        </div>
+        <div class="feature-visual">
+          <div class="feature-phone">
+            <img src="img/statistics.png" alt="Statistics" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Goals -->
+      <div class="feature-item">
+        <div class="feature-text">
+          <div class="feature-number">05</div>
+          <h3 class="feature-title">Set goals, crush them</h3>
+          <p class="feature-desc">
+            Define targets for any counter with deadlines and priority levels. Visual progress bars and a dashboard keep you motivated and on track.
+          </p>
+          <div class="feature-tags">
+            <span class="feature-tag">Deadlines</span>
+            <span class="feature-tag">Priority</span>
+            <span class="feature-tag">Progress Tracking</span>
+          </div>
+        </div>
+        <div class="feature-visual">
+          <div class="feature-phone">
+            <img src="img/targets.png" alt="Goals" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Events & Actions -->
+      <div class="feature-item">
+        <div class="feature-text">
+          <div class="feature-number">06</div>
+          <h3 class="feature-title">Automated intelligence</h3>
+          <p class="feature-desc">
+            Create powerful automations: when a counter reaches a value, trigger notifications, webhooks, color changes, counter resets, and more — all automatically.
+          </p>
+          <div class="feature-tags">
+            <span class="feature-tag">Events</span>
+            <span class="feature-tag">Webhooks</span>
+            <span class="feature-tag">Notifications</span>
+          </div>
+        </div>
+        <div class="feature-visual">
+          <div class="feature-phone">
+            <img src="img/automatic_actions.png" alt="Events & Actions" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Widgets -->
+      <div class="feature-item">
+        <div class="feature-text">
+          <div class="feature-number">07</div>
+          <h3 class="feature-title">Always on your home screen</h3>
+          <p class="feature-desc">
+            Beautiful home screen widgets in multiple sizes let you see and update your counters without even opening the app. Color-matched to your counters.
+          </p>
+          <div class="feature-tags">
+            <span class="feature-tag">Multiple Sizes</span>
+            <span class="feature-tag">Quick Update</span>
+            <span class="feature-tag">Color Sync</span>
+          </div>
+        </div>
+        <div class="feature-visual">
+          <div class="feature-phone">
+            <img src="img/widgets.png" alt="Widgets" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section class="highlights" id="highlights">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Why Counter</span>
+      <h2 class="section-title">Built different</h2>
+      <p class="section-subtitle">Not just another counter app. Here's what sets Counter apart from the rest.</p>
+    </div>
+
+    <div class="highlights-grid">
+      <div class="highlight-card reveal">
+        <div class="highlight-icon">🧮</div>
+        <h3>Calculated Views</h3>
+        <p>Create counters that are the result of algebraic expressions combining other counters. Balance = Revenues - Expenses? Done.</p>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="highlight-icon">⚡</div>
+        <h3>Events & Actions</h3>
+        <p>Automate workflows: trigger webhooks, notifications, color changes, and more when counters reach specific conditions.</p>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="highlight-icon">🎯</div>
+        <h3>Goals & Deadlines</h3>
+        <p>Set targets with deadlines, priority levels, and track progress with visual indicators and success rate analytics.</p>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="highlight-icon">🌙</div>
+        <h3>Dark Mode</h3>
+        <p>Full dark theme support that's easy on the eyes. Automatically adapts to your system preferences.</p>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="highlight-icon">📊</div>
+        <h3>Rich Statistics</h3>
+        <p>Detailed analytics with charts, streaks, trends, averages, and hourly activity patterns for every counter.</p>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="highlight-icon">🔒</div>
+        <h3>Private Counters</h3>
+        <p>Lock sensitive counters behind app-level protection. Your data stays your data, always.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DARK MODE PREVIEW -->
+<section style="padding: 60px 0;">
+  <div class="container">
+    <div class="feature-item visible" style="border: none; padding: 40px 0;">
+      <div class="feature-text">
+        <div class="feature-number">BONUS</div>
+        <h3 class="feature-title">Stunning dark mode</h3>
+        <p class="feature-desc">
+          A carefully crafted dark theme that looks gorgeous and saves battery. Every element is designed for perfect contrast and readability.
+        </p>
+        <div class="feature-tags">
+          <span class="feature-tag">AMOLED Friendly</span>
+          <span class="feature-tag">Auto Switch</span>
+          <span class="feature-tag">Material You</span>
+        </div>
+      </div>
+      <div class="feature-visual">
+        <div class="feature-phone">
+          <img src="img/night_mode.png" alt="Dark Mode" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="download">
+  <div class="container">
+    <div class="cta-box reveal">
+      <h2>Start counting today</h2>
+      <p>Free download. No account required. Unlimited counters.</p>
+      <div class="cta-buttons">
+        <a href="https://play.google.com/store/apps/details?id=com.zipangulu.counter" class="btn-google-play" target="_blank" rel="noopener">
+          <svg width="20" height="20" aria-hidden="true" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0,0h40v40H0V0z"></path><g><path d="M19.7,19.2L4.3,35.3c0,0,0,0,0,0c0.5,1.7,2.1,3,4,3c0.8,0,1.5-0.2,2.1-0.6l0,0l17.4-9.9L19.7,19.2z" fill="#EA4335"></path><path d="M35.3,16.4L35.3,16.4l-7.5-4.3l-8.4,7.4l8.5,8.3l7.5-4.2c1.3-0.7,2.2-2.1,2.2-3.6C37.5,18.5,36.6,17.1,35.3,16.4z" fill="#FBBC04"></path><path d="M4.3,4.7C4.2,5,4.2,5.4,4.2,5.8v28.5c0,0.4,0,0.7,0.1,1.1l16-15.7L4.3,4.7z" fill="#4285F4"></path><path d="M19.8,20l8-7.9L10.5,2.3C9.9,1.9,9.1,1.7,8.3,1.7c-1.9,0-3.6,1.3-4,3c0,0,0,0,0,0L19.8,20z" fill="#34A853"></path></g></svg>
+          Get it on Google Play
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>© 2025 Counter. Built with ❤️ for people who count.
+      <br><a href="https://play.google.com/store/apps/details?id=com.zipangulu.counter" target="_blank" rel="noopener">Google Play</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('nav').classList.toggle('open');
+});
+
+// Close menu on link click
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('nav').classList.remove('open');
+  });
+});
+
+// Intersection Observer for scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.feature-item, .reveal').forEach(el => {
+  observer.observe(el);
+});
+
+// Stagger reveal for highlight cards
+const cardObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, i * 100);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.highlight-card').forEach(el => {
+  cardObserver.observe(el);
+});
+</script>
+
+</body>
+</html>
