@@ -3,8 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Counter — Count & Automate</title>
-<link rel="icon" type="image/png" href="img/logo.png">
+<title>Counter App — Track Habits, Goals & Finances with Smart Automations | Android</title>
+<meta name="description" content="Free Android counter app with automated actions, calculated views, goal tracking, statistics, webhooks, and home screen widgets. Track habits, finances, steps, and anything you can count.">
+<meta name="keywords" content="counter app, tally counter, habit tracker, goal tracker android, counter with automations, webhook counter, calculated counter, android widget counter, free counter app">
+
+<!-- Canonical URL — SOSTITUISCI con il tuo URL reale -->
+<link rel="canonical" href="https://counterautomate.com/">
+
+<!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Counter — Track Everything That Matters">
+<meta property="og:description" content="The smartest free counter app for Android. Automate actions, track goals, analyze trends, and manage counters with calculated views and widgets.">
+<meta property="og:image" content="https://counterautomate.com/img/og-image.webp">
+<meta property="og:url" content="https://counterautomate.com/">
+<meta property="og:site_name" content="Counter App">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Counter — Track Everything That Matters">
+<meta name="twitter:description" content="Free Android counter app with automations, goals, statistics, webhooks, and home screen widgets.">
+<meta name="twitter:image" content="https://counterautomate.com/img/og-image.webp">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Counter",
+  "operatingSystem": "Android",
+  "applicationCategory": "UtilitiesApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "description": "Smart counter app for Android with automated actions, calculated views, goal tracking, statistics, webhooks, and home screen widgets.",
+  "url": "https://counterautomate.com/",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.zipangulu.counter",
+  "screenshot": "https://counterautomate.com/img/home.webp",
+  "featureList": "Automated Events & Actions, Calculated Counter Views, Goal Tracking, Statistics & Charts, Home Screen Widgets, Dark Mode, Webhooks, Categories"
+}
+</script>
+
+<link rel="icon" type="image/png" sizes="32x32" href="img/logo.webp">
+<link rel="apple-touch-icon" href="img/logo.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -750,10 +792,11 @@ footer a:hover { color: var(--accent-light); }
 <body>
 
 <!-- NAV -->
-<nav id="nav">
+<header>
+<nav id="nav" aria-label="Main navigation">
   <div class="container">
     <a href="#" class="nav-logo">
-      <img src="img/logo.png" alt="Counter Logo" class="nav-logo-img">
+      <img src="img/logo.webp" alt="Counter Logo" class="nav-logo-img">
       <span>Counter</span>
     </a>
     <ul class="nav-links" id="navLinks">
@@ -772,11 +815,14 @@ footer a:hover { color: var(--accent-light); }
     </button>
   </div>
 </nav>
+</header>
+
+<main>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
+<section class="hero" aria-label="Hero">
+  <div class="orb orb-1" aria-hidden="true"></div>
+  <div class="orb orb-2" aria-hidden="true"></div>
   <div class="container">
     <div class="hero-grid">
       <div class="hero-content">
@@ -786,7 +832,7 @@ footer a:hover { color: var(--accent-light); }
           that matters.
         </h1>
         <p>
-          The smartest counter app for Android. Track habits, finances, goals, and more with automated actions, calculated views, and beautiful widgets.
+          The smartest free counter app for Android. Track habits, finances, goals, and more with automated actions, calculated views, and beautiful home screen widgets.
         </p>
         <div class="hero-actions">
           <a href="https://play.google.com/store/apps/details?id=com.zipangulu.counter" class="btn-primary" target="_blank" rel="noopener">
@@ -801,7 +847,7 @@ footer a:hover { color: var(--accent-light); }
       </div>
       <div class="hero-phone">
         <div class="phone-mockup phone-float">
-          <img src="img/home.png" alt="Counter App Home Screen" loading="eager">
+          <img src="img/home.webp" alt="Counter app home screen showing categorized counters for wellness, finance, and productivity tracking on Android" loading="eager">
         </div>
       </div>
     </div>
@@ -809,7 +855,7 @@ footer a:hover { color: var(--accent-light); }
 </section>
 
 <!-- FEATURES -->
-<section class="features" id="features">
+<section class="features" id="features" aria-label="Features">
   <div class="container">
     <div class="section-header reveal">
       <span class="section-label">Features</span>
@@ -820,7 +866,7 @@ footer a:hover { color: var(--accent-light); }
     <div class="feature-showcase">
 
       <!-- 1. Homepage -->
-      <div class="feature-item">
+      <article class="feature-item">
         <div class="feature-text">
           <div class="feature-number">01</div>
           <h3 class="feature-title">Organized at a glance</h3>
@@ -835,13 +881,13 @@ footer a:hover { color: var(--accent-light); }
         </div>
         <div class="feature-visual">
           <div class="feature-phone">
-            <img src="img/home.png" alt="Home Screen" loading="lazy">
+            <img src="img/home.webp" alt="Counter app home screen with color-coded category cards for wellness, finance, and productivity counters" loading="lazy">
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- 2. Detail -->
-      <div class="feature-item">
+      <article class="feature-item">
         <div class="feature-text">
           <div class="feature-number">02</div>
           <h3 class="feature-title">Full control at your fingertips</h3>
@@ -856,16 +902,16 @@ footer a:hover { color: var(--accent-light); }
         </div>
         <div class="feature-visual">
           <div class="feature-phone">
-            <img src="img/detail.png" alt="Counter Detail" loading="lazy">
+            <img src="img/detail.webp" alt="Counter detail view with large value display, quick increment buttons, and custom keyboard" loading="lazy">
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- 3. Create -->
-      <div class="feature-item">
+      <article class="feature-item">
         <div class="feature-text">
           <div class="feature-number">03</div>
-          <h3 class="feature-title">Fully customizable</h3>
+          <h3 class="feature-title">Fully customizable counters</h3>
           <p class="feature-desc">
             Set initial values, boundaries, step size, colors, categories, automated actions event based, and even define calculated "view" counters powered by algebraic formulas.
           </p>
@@ -877,16 +923,16 @@ footer a:hover { color: var(--accent-light); }
         </div>
         <div class="feature-visual">
           <div class="feature-phone">
-            <img src="img/create_counter.png" alt="Create Counter" loading="lazy">
+            <img src="img/create_counter.webp" alt="Create counter screen with customization options for title, values, categories, colors, and formula views" loading="lazy">
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- 4. Statistics -->
-      <div class="feature-item">
+      <article class="feature-item">
         <div class="feature-text">
           <div class="feature-number">04</div>
-          <h3 class="feature-title">Deep analytics</h3>
+          <h3 class="feature-title">Deep analytics and statistics</h3>
           <p class="feature-desc">
             Track streaks, averages, trends, and peak hours. Filter by time range and visualize your data with interactive charts and detailed logs.
           </p>
@@ -898,13 +944,13 @@ footer a:hover { color: var(--accent-light); }
         </div>
         <div class="feature-visual">
           <div class="feature-phone">
-            <img src="img/statistics.png" alt="Statistics" loading="lazy">
+            <img src="img/statistics.webp" alt="Counter statistics overview showing current value, streak, maximum, minimum, average daily change, and weekly trend" loading="lazy">
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- 5. Goals -->
-      <div class="feature-item">
+      <article class="feature-item">
         <div class="feature-text">
           <div class="feature-number">05</div>
           <h3 class="feature-title">Set goals, crush them</h3>
@@ -919,16 +965,16 @@ footer a:hover { color: var(--accent-light); }
         </div>
         <div class="feature-visual">
           <div class="feature-phone">
-            <img src="img/targets.png" alt="Goals" loading="lazy">
+            <img src="img/targets.webp" alt="Goals dashboard showing active targets with progress bars, deadlines, and priority levels for counter objectives" loading="lazy">
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- 6. Events & Actions -->
-      <div class="feature-item">
+      <article class="feature-item">
         <div class="feature-text">
           <div class="feature-number">06</div>
-          <h3 class="feature-title">Automated intelligence</h3>
+          <h3 class="feature-title">Automated events and actions</h3>
           <p class="feature-desc">
             Create powerful automations: when a counter reaches a value, trigger notifications, webhooks, color changes, counter resets, and more — all automatically.
           </p>
@@ -940,16 +986,16 @@ footer a:hover { color: var(--accent-light); }
         </div>
         <div class="feature-visual">
           <div class="feature-phone">
-            <img src="img/automatic_actions.png" alt="Events & Actions" loading="lazy">
+            <img src="img/automatic_actions.webp" alt="Events and actions automation panel showing counter value triggers linked to notifications, color changes, and webhooks" loading="lazy">
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- 7. Widgets -->
-      <div class="feature-item">
+      <article class="feature-item">
         <div class="feature-text">
           <div class="feature-number">07</div>
-          <h3 class="feature-title">Always on your home screen</h3>
+          <h3 class="feature-title">Home screen widgets</h3>
           <p class="feature-desc">
             Beautiful home screen widgets in multiple sizes let you see and update your counters without even opening the app. Color-matched to your counters.
           </p>
@@ -961,10 +1007,10 @@ footer a:hover { color: var(--accent-light); }
         </div>
         <div class="feature-visual">
           <div class="feature-phone">
-            <img src="img/widgets.png" alt="Widgets" loading="lazy">
+            <img src="img/widgets.webp" alt="Android home screen widgets showing counter values in multiple sizes with color-matched backgrounds" loading="lazy">
           </div>
         </div>
-      </div>
+      </article>
 
     </div>
   </div>
@@ -1015,9 +1061,9 @@ footer a:hover { color: var(--accent-light); }
 </section>
 
 <!-- DARK MODE PREVIEW -->
-<section style="padding: 60px 0;">
-  <div class="container">
-    <div class="feature-item visible" style="border: none; padding: 40px 0;">
+<section aria-label="Dark mode feature">
+  <div class="container" style="padding: 60px 0;">
+    <article class="feature-item visible" style="border: none; padding: 40px 0;">
       <div class="feature-text">
         <div class="feature-number">BONUS</div>
         <h3 class="feature-title">Stunning dark mode</h3>
@@ -1032,10 +1078,10 @@ footer a:hover { color: var(--accent-light); }
       </div>
       <div class="feature-visual">
         <div class="feature-phone">
-          <img src="img/night_mode.png" alt="Dark Mode" loading="lazy">
+          <img src="img/night_mode.webp" alt="Counter app dark mode showing the same home screen with AMOLED-friendly dark theme" loading="lazy">
         </div>
       </div>
-    </div>
+    </article>
   </div>
 </section>
 
@@ -1056,10 +1102,12 @@ footer a:hover { color: var(--accent-light); }
 </section>
 
 <!-- FOOTER -->
+</main>
+
 <footer>
   <div class="container">
     <p>© 2025 Counter. Built with ❤️ for people who count.
-      <br><a href="https://play.google.com/store/apps/details?id=com.zipangulu.counter" target="_blank" rel="noopener">Google Play</a>
+      <br><a href="https://play.google.com/store/apps/details?id=com.zipangulu.counter" target="_blank" rel="noopener">Download on Google Play</a>
     </p>
   </div>
 </footer>
