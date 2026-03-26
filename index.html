@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Counter App — Track Habits, Goals & Finances with Smart Automations | Android</title>
-<meta name="description" content="Free Android counter app with automated actions, calculated views, goal tracking, statistics, webhooks, and home screen widgets. Track habits, finances, steps, and anything you can count.">
-<meta name="keywords" content="counter app, tally counter, habit tracker, goal tracker android, counter with automations, webhook counter, calculated counter, android widget counter, free counter app">
+<meta name="description" content="Free Android counter app (tally counter) with webhooks, NFC tags, Tasker integration, Home Assistant support, automated actions, calculated views, goal tracking, and statistics. Track habits, finances, and anything you can count.">
+<meta name="keywords" content="counter app, tally counter, habit tracker, goal tracker android, counter with automations, webhook counter, NFC counter, tasker counter, home assistant counter, calculated counter, android widget counter, free counter app, smart home counter">
 
 <!-- Canonical URL — SOSTITUISCI con il tuo URL reale -->
 <link rel="canonical" href="https://counterautomate.com/">
@@ -545,9 +545,15 @@ nav .container {
 }
 
 .highlights-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
+}
+
+.highlight-card {
+  flex: 0 1 calc(33.333% - 14px);
+  min-width: 280px;
 }
 
 .highlight-card {
@@ -577,6 +583,8 @@ nav .container {
 .highlight-card:nth-child(4)::before { background: var(--red); }
 .highlight-card:nth-child(5)::before { background: var(--accent-light); }
 .highlight-card:nth-child(6)::before { background: var(--green); }
+.highlight-card:nth-child(7)::before { background: #636e8a; }
+.highlight-card:nth-child(8)::before { background: var(--red); }
 
 .highlight-card:hover {
   background: var(--bg-card-hover);
@@ -600,6 +608,8 @@ nav .container {
 .highlight-card:nth-child(4) .highlight-icon { background: rgba(225,112,85,0.12); }
 .highlight-card:nth-child(5) .highlight-icon { background: rgba(162,155,254,0.12); }
 .highlight-card:nth-child(6) .highlight-icon { background: rgba(0,184,148,0.12); }
+.highlight-card:nth-child(7) .highlight-icon { background: rgba(99,110,138,0.12); }
+.highlight-card:nth-child(8) .highlight-icon { background: rgba(225,112,85,0.12); }
 
 .highlight-card h3 {
   font-size: 18px;
@@ -612,6 +622,94 @@ nav .container {
   font-size: 14px;
   color: var(--text-secondary);
   line-height: 1.6;
+}
+
+/* ===== INTEGRATIONS ===== */
+.integrations {
+  padding: 120px 0;
+  position: relative;
+}
+
+.integrations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.integration-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.integration-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.integration-card:hover::before { opacity: 1; }
+.integration-card:nth-child(1)::before { background: var(--accent); }
+.integration-card:nth-child(2)::before { background: var(--green); }
+.integration-card:nth-child(3)::before { background: var(--orange); }
+.integration-card:nth-child(4)::before { background: #0088cc; }
+
+.integration-card:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.integration-icon {
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.integration-card:nth-child(1) .integration-icon { background: rgba(108,92,231,0.12); color: var(--accent-light); }
+.integration-card:nth-child(2) .integration-icon { background: rgba(0,184,148,0.12); color: var(--green); }
+.integration-card:nth-child(3) .integration-icon { background: rgba(253,203,110,0.12); color: var(--orange); }
+.integration-card:nth-child(4) .integration-icon { background: rgba(0,136,204,0.12); color: #0088cc; }
+
+.integration-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.3px;
+}
+
+.integration-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.integration-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.integration-tag {
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: rgba(255,255,255,0.03);
 }
 
 /* ===== CTA ===== */
@@ -740,7 +838,11 @@ footer a:hover { color: var(--accent-light); }
   .feature-tags { justify-content: center; }
   .feature-phone { width: 200px; }
 
-  .highlights-grid { grid-template-columns: 1fr; }
+  .integrations-grid { grid-template-columns: 1fr; }
+  .integration-card { padding: 28px; }
+
+  .highlights-grid { flex-direction: column; }
+  .highlight-card { flex: 1 1 100%; min-width: 0; }
 
   .cta-box { padding: 48px 24px; }
   .cta-buttons { flex-direction: column; align-items: center; }
@@ -801,6 +903,7 @@ footer a:hover { color: var(--accent-light); }
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#features">Features</a></li>
+      <li><a href="#integrations">Integrations</a></li>
       <li><a href="#highlights">Why Counter</a></li>
       <li><a href="#download">Download</a></li>
       <li>
@@ -832,7 +935,7 @@ footer a:hover { color: var(--accent-light); }
           that matters.
         </h1>
         <p>
-          The smartest free counter app for Android. Track habits, finances, goals, and more with automated actions, calculated views, and beautiful home screen widgets.
+          The free Android counter app that connects to your smart home, triggers webhooks, reads NFC tags, and runs automations. Track habits, finances, and anything you can count.
         </p>
         <div class="hero-actions">
           <a href="https://play.google.com/store/apps/details?id=com.zipangulu.counter" class="btn-primary" target="_blank" rel="noopener">
@@ -974,14 +1077,16 @@ footer a:hover { color: var(--accent-light); }
       <article class="feature-item">
         <div class="feature-text">
           <div class="feature-number">06</div>
-          <h3 class="feature-title">Automated events and actions</h3>
+          <h3 class="feature-title">Automate everything</h3>
           <p class="feature-desc">
-            Create powerful automations: when a counter reaches a value, trigger notifications, webhooks, color changes, counter resets, and more — all automatically.
+            Set up "if this, then that" rules with 12 trigger types and 12 action types. When a counter reaches a value, fire a webhook to Home Assistant, send a broadcast intent to Tasker or Automate, push a Telegram message, modify other counters, change colors — all automatically, with no code.
           </p>
           <div class="feature-tags">
-            <span class="feature-tag">Events</span>
             <span class="feature-tag">Webhooks</span>
-            <span class="feature-tag">Notifications</span>
+            <span class="feature-tag">Tasker & Automate</span>
+            <span class="feature-tag">Telegram</span>
+            <span class="feature-tag">12 Triggers</span>
+            <span class="feature-tag">Cascading Logic</span>
           </div>
         </div>
         <div class="feature-visual">
@@ -1016,6 +1121,69 @@ footer a:hover { color: var(--accent-light); }
   </div>
 </section>
 
+<!-- INTEGRATIONS -->
+<section class="integrations" id="integrations">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Integrations</span>
+      <h2 class="section-title">Connects to everything</h2>
+      <p class="section-subtitle">Your counters don't live in isolation. They talk to your smart home, your automation apps, your web services, and even physical NFC tags.</p>
+    </div>
+
+    <div class="integrations-grid">
+      <div class="integration-card reveal">
+        <div class="integration-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <h3>Webhooks</h3>
+        <p>Fire HTTP requests (GET, POST, PUT, PATCH, DELETE) with custom headers, authentication, JSON payloads, and template variables. Connect to Home Assistant, Google Sheets, Zapier, Make, or any REST API.</p>
+        <div class="integration-tags">
+          <span class="integration-tag">Home Assistant</span>
+          <span class="integration-tag">Google Sheets</span>
+          <span class="integration-tag">Zapier</span>
+          <span class="integration-tag">Any REST API</span>
+        </div>
+      </div>
+      <div class="integration-card reveal">
+        <div class="integration-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.4"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.4"/><path d="M19.1 4.9C23 8.8 23 15.2 19.1 19.1"/></svg>
+        </div>
+        <h3>Broadcast Intents</h3>
+        <p>Send Android broadcast intents that Tasker, Automate, and MacroDroid can catch. Turn your counters into triggers for any phone automation — control Bluetooth, send SMS, launch apps, and more.</p>
+        <div class="integration-tags">
+          <span class="integration-tag">Tasker</span>
+          <span class="integration-tag">Automate</span>
+          <span class="integration-tag">MacroDroid</span>
+        </div>
+      </div>
+      <div class="integration-card reveal">
+        <div class="integration-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 6v12"/><path d="M2 12h20"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>
+        </div>
+        <h3>NFC Tags</h3>
+        <p>Write counter actions to physical NFC tags. Tap your phone on a sticker to increment, decrement, or reset a counter — no app opening needed. Stick them on your water bottle, gym bag, or front door.</p>
+        <div class="integration-tags">
+          <span class="integration-tag">NDEF Write</span>
+          <span class="integration-tag">Tap to Count</span>
+          <span class="integration-tag">Zero Setup</span>
+        </div>
+      </div>
+      <div class="integration-card reveal">
+        <div class="integration-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Telegram</h3>
+        <p>Send automatic messages to any Telegram chat when a counter event fires. Custom message templates with dynamic variables like counter value, title, and timestamp.</p>
+        <div class="integration-tags">
+          <span class="integration-tag">Bot API</span>
+          <span class="integration-tag">Custom Templates</span>
+          <span class="integration-tag">Real-time</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- HIGHLIGHTS -->
 <section class="highlights" id="highlights">
   <div class="container">
@@ -1042,14 +1210,24 @@ footer a:hover { color: var(--accent-light); }
         <p>Set targets with deadlines, priority levels, and track progress with visual indicators and success rate analytics.</p>
       </div>
       <div class="highlight-card reveal">
-        <div class="highlight-icon">🌙</div>
-        <h3>Dark Mode</h3>
-        <p>Full dark theme support that's easy on the eyes. Automatically adapts to your system preferences.</p>
+        <div class="highlight-icon">📱</div>
+        <h3>NFC Tags</h3>
+        <p>Stick NFC tags around your house, gym, or office. Tap to instantly update counters — no app opening required.</p>
       </div>
       <div class="highlight-card reveal">
         <div class="highlight-icon">📊</div>
         <h3>Rich Statistics</h3>
         <p>Detailed analytics with charts, streaks, trends, averages, and hourly activity patterns for every counter.</p>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="highlight-icon">🏠</div>
+        <h3>Smart Home Ready</h3>
+        <p>Fire webhooks to Home Assistant, send intents to Tasker, or call any REST API. Your counters become smart home triggers.</p>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="highlight-icon">🌙</div>
+        <h3>Dark Mode</h3>
+        <p>Full dark theme support that's easy on the eyes. Automatically adapts to your system preferences.</p>
       </div>
       <div class="highlight-card reveal">
         <div class="highlight-icon">🔒</div>
@@ -1149,7 +1327,7 @@ const cardObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.highlight-card').forEach(el => {
+document.querySelectorAll('.highlight-card, .integration-card').forEach(el => {
   cardObserver.observe(el);
 });
 </script>
