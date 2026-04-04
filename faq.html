@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App - FAQ</title>
+    <style>
+        :root {
+            --primary: #4285f4;
+            --primary-dark: #3367d6;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --text: #212121;
+            --text-secondary: #616161;
+            --border: #e0e0e0;
+            --accent: #1a73e8;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #121212;
+                --card-bg: #1e1e1e;
+                --text: #e0e0e0;
+                --text-secondary: #aaaaaa;
+                --border: #333333;
+                --accent: #8ab4f8;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 0 16px 40px;
+        }
+
+        header {
+            text-align: center;
+            padding: 32px 0 24px;
+        }
+
+        header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        header p {
+            color: var(--text-secondary);
+            margin-top: 4px;
+            font-size: 15px;
+        }
+
+        nav {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+        }
+
+        nav h2 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav li {
+            margin: 6px 0;
+        }
+
+        nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            margin-bottom: 32px;
+        }
+
+        section > h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--accent);
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 16px;
+        }
+
+        details {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            cursor: pointer;
+            padding: 14px 16px;
+            font-weight: 600;
+            font-size: 15px;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::before {
+            content: '+';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            flex-shrink: 0;
+            transition: transform 0.2s;
+        }
+
+        details[open] summary::before {
+            content: '\2212';
+        }
+
+        .answer {
+            padding: 0 16px 16px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .answer p {
+            margin-bottom: 8px;
+        }
+
+        .answer ul, .answer ol {
+            margin: 8px 0 8px 20px;
+        }
+
+        .answer li {
+            margin-bottom: 4px;
+        }
+
+        .answer strong {
+            color: var(--text);
+        }
+
+        .answer code {
+            background: var(--border);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .answer pre {
+            background: var(--border);
+            padding: 12px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 8px 0;
+            font-size: 13px;
+        }
+
+        .answer pre code {
+            background: none;
+            padding: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px 0;
+            color: var(--text-secondary);
+            font-size: 13px;
+            border-top: 1px solid var(--border);
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Counter - FAQ</h1>
+    <p>Frequently Asked Questions</p>
+</header>
+
+<nav>
+    <h2>Jump to section</h2>
+    <ul>
+        <li><a href="#basics">Basics</a></li>
+        <li><a href="#advanced">Advanced Counters</a></li>
+        <li><a href="#goals">Goals &amp; Challenges</a></li>
+        <li><a href="#automations">Automations (Events &amp; Actions)</a></li>
+        <li><a href="#integrations">Integrations (NFC, Widgets, External)</a></li>
+        <li><a href="#other">Other</a></li>
+    </ul>
+</nav>
+
+<!-- ===== BASICS ===== -->
+<section id="basics">
+    <h2>Basics</h2>
+
+    <details>
+        <summary>How do I create a counter?</summary>
+        <div class="answer">
+            <p>Tap the <strong>+</strong> floating action button on the main screen. Fill in the counter name, choose a color, set the initial value, increment/decrement steps, and optionally assign it to a category. Tap <strong>Save</strong> to create it.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>How do I increment or decrement a counter?</summary>
+        <div class="answer">
+            <p>On the main screen, tap the <strong>+</strong> or <strong>&minus;</strong> buttons on each counter card. You can also open the counter detail screen for more options, including setting a custom value.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>What are categories and how do I use them?</summary>
+        <div class="answer">
+            <p>Categories let you organize counters into groups. When you create or edit a counter, you can assign it to a category. On the main screen, counters can be displayed grouped by category using the <strong>Categorized</strong> view mode in Settings.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>How do I change the color of a counter?</summary>
+        <div class="answer">
+            <p>Open the counter editor (long press a counter or tap the edit icon) and tap the color circle. Choose any color from the palette. The color is used for the counter card and charts.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>How do I reset a counter?</summary>
+        <div class="answer">
+            <p>Open the counter detail screen and tap the <strong>Reset</strong> option. The counter will be set back to its configured reset value (default is 0). The reset is logged in the counter history.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>What is the PIN / private mode?</summary>
+        <div class="answer">
+            <p>You can set a PIN in <strong>Settings &gt; Security</strong> to protect private counters. When a counter is marked as private, you must enter the PIN (or use biometric unlock if enabled) to view it. The PIN is stored securely as a hash.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>Can I use fingerprint to unlock private counters?</summary>
+        <div class="answer">
+            <p>Yes. Go to <strong>Settings &gt; Security</strong> and enable <strong>Biometric unlock</strong>. You must first set a PIN before enabling biometric authentication. Once enabled, you can use your fingerprint instead of the PIN.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>How do I change the layout or view mode?</summary>
+        <div class="answer">
+            <p>In <strong>Settings</strong> you can configure:</p>
+            <ul>
+                <li><strong>View mode</strong> &ndash; Flat list or Categorized view</li>
+                <li><strong>Layout type</strong> &ndash; List or Grid arrangement</li>
+                <li><strong>Item template</strong> &ndash; Different card styles for counters</li>
+            </ul>
+        </div>
+    </details>
+
+    <details>
+        <summary>Can I change the app theme?</summary>
+        <div class="answer">
+            <p>Yes. Go to <strong>Settings</strong> and choose between <strong>Light</strong>, <strong>Dark</strong>, or <strong>System default</strong> theme. You can also enable <strong>Dynamic Color (Material You)</strong> to use your device's wallpaper-based color palette.</p>
+        </div>
+    </details>
+</section>
+
+<!-- ===== ADVANCED ===== -->
+<section id="advanced">
+    <h2>Advanced Counters</h2>
+
+    <details>
+        <summary>What are View Counters (formulas)?</summary>
+        <div class="answer">
+            <p>View Counters are computed counters whose value is calculated from a mathematical formula referencing other counters. They update automatically when the referenced counters change.</p>
+            <p>Use the syntax <code>c{id}</code> to reference a counter by its ID. For example:</p>
+            <ul>
+                <li><code>c1 + c2</code> &ndash; sum of counter 1 and counter 2</li>
+                <li><code>c3 * 2</code> &ndash; double the value of counter 3</li>
+                <li><code>c1 - c2 + c3</code> &ndash; combined calculation</li>
+                <li><code>(c1 + c2) / 2</code> &ndash; average of two counters</li>
+            </ul>
+            <p>Standard math operators are supported: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>How do I set custom increment/decrement steps?</summary>
+        <div class="answer">
+            <p>When creating or editing a counter, set the <strong>Increment value</strong> and <strong>Decrement value</strong> fields. Each tap of +/&minus; will change the counter by these amounts.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>Can I set minimum or maximum limits on a counter?</summary>
+        <div class="answer">
+            <p>Yes. In the counter editor, you can set a <strong>minimum value</strong> and/or <strong>maximum value</strong>. The counter will not go below the minimum or above the maximum. If a value exceeds the range, it will be adapted automatically.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>How do I export and import my data?</summary>
+        <div class="answer">
+            <p>Go to <strong>Settings &gt; Backup</strong>:</p>
+            <ul>
+                <li><strong>Export</strong> &ndash; Saves all your data (counters, categories, goals, challenges, automations, logs) as a JSON file you can store anywhere.</li>
+                <li><strong>Import</strong> &ndash; Restores data from a previously exported JSON file.</li>
+            </ul>
+            <p>This is useful for backing up your data or transferring to a new device.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>What are counter effects?</summary>
+        <div class="answer">
+            <p>Counter effects add visual feedback when you tap +/&minus;. You can choose different animation effects in <strong>Settings &gt; Counter effects</strong>, or disable them by selecting <strong>None</strong>.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>How does the counter history/log work?</summary>
+        <div class="answer">
+            <p>Every change to a counter is logged with the timestamp, new value, delta (change amount), and whether it was a manual action, reset, or automatic change. You can view the history from the counter detail screen and use charts to visualize trends over time.</p>
+        </div>
+    </details>
+</section>
+
+<!-- ===== GOALS & CHALLENGES ===== -->
+<section id="goals">
+    <h2>Goals &amp; Challenges</h2>
+
+    <details>
+        <summary>What types of goals can I set?</summary>
+        <div class="answer">
+            <p>There are four goal types:</p>
+            <ul>
+                <li><strong>Reach Value</strong> &ndash; Reach a specific target value (e.g., count to 100).</li>
+                <li><strong>Reach by Date</strong> &ndash; Reach a target value before a deadline date.</li>
+                <li><strong>Range Goal</strong> &ndash; Keep the counter value between a minimum and maximum bound.</li>
+                <li><strong>Decrease Goal</strong> &ndash; Reduce the counter below a specific target value.</li>
+            </ul>
+            <p>Each goal can have a priority (Low, Medium, High) and can auto-complete when the target is reached.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>Do I get notified when I reach a goal?</summary>
+        <div class="answer">
+            <p>Yes. The app monitors your goals in the background and sends a notification when a goal is reached or when a deadline is approaching. You can see your goal progress on the <strong>Goals</strong> tab.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>What are Challenges?</summary>
+        <div class="answer">
+            <p>Challenges let you compete by counting as fast as possible. Create a challenge, add one or more counters, and optionally set a <strong>timer</strong> (in seconds). When the challenge starts, all selected counters can optionally be reset to zero. The challenge play screen tracks progress in real-time.</p>
+            <p>Challenges are great for competitive counting games or timed exercises.</p>
+        </div>
+    </details>
+</section>
+
+<!-- ===== AUTOMATIONS ===== -->
+<section id="automations">
+    <h2>Automations (Events &amp; Actions)</h2>
+
+    <details>
+        <summary>What are Events &amp; Actions?</summary>
+        <div class="answer">
+            <p>The Events &amp; Actions system lets you automate tasks based on counter changes. You configure <strong>rules</strong>: when a specific <strong>event</strong> occurs on a counter, one or more <strong>actions</strong> are executed automatically.</p>
+            <p>You can enable or disable this feature in <strong>Settings &gt; Events &amp; Actions</strong>.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>What events are available?</summary>
+        <div class="answer">
+            <p>There are 12 event types you can use as triggers:</p>
+            <ul>
+                <li><strong>Counter Updated</strong> &ndash; Fires every time the counter changes.</li>
+                <li><strong>Reached Value</strong> &ndash; Counter reaches exactly a specific value.</li>
+                <li><strong>Reached Greater Value</strong> &ndash; Counter reaches or exceeds a value.</li>
+                <li><strong>Reached Less Value</strong> &ndash; Counter drops below a value.</li>
+                <li><strong>Multiple of Value</strong> &ndash; Counter value is a multiple of N (e.g., every 10).</li>
+                <li><strong>Between Values</strong> &ndash; Counter value is between two numbers.</li>
+                <li><strong>Even Value</strong> &ndash; Counter value is even.</li>
+                <li><strong>Odd Value</strong> &ndash; Counter value is odd.</li>
+                <li><strong>Prime Value</strong> &ndash; Counter value is a prime number.</li>
+                <li><strong>Palindrome Value</strong> &ndash; Counter value is a palindrome (e.g., 121, 1331).</li>
+                <li><strong>Reached Max Value</strong> &ndash; Counter hits its configured maximum.</li>
+                <li><strong>Reached Min Value</strong> &ndash; Counter hits its configured minimum.</li>
+            </ul>
+        </div>
+    </details>
+
+    <details>
+        <summary>What actions can I configure?</summary>
+        <div class="answer">
+            <p>There are 11 action types:</p>
+            <ul>
+                <li><strong>Show Notification</strong> &ndash; Display a system notification with custom text.</li>
+                <li><strong>Toast Message</strong> &ndash; Show a temporary on-screen message.</li>
+                <li><strong>Webhook</strong> &ndash; Send an HTTP request to a URL.</li>
+                <li><strong>Telegram Message</strong> &ndash; Send a message to a Telegram chat.</li>
+                <li><strong>Reset Counter</strong> &ndash; Reset the counter to its reset value.</li>
+                <li><strong>Increment Another Counter</strong> &ndash; Increment a different counter.</li>
+                <li><strong>Decrement Another Counter</strong> &ndash; Decrement a different counter.</li>
+                <li><strong>Double Counter Value</strong> &ndash; Double the current counter value.</li>
+                <li><strong>Set Counter Color</strong> &ndash; Change the counter's color.</li>
+                <li><strong>Set Counter Title</strong> &ndash; Change the counter's title.</li>
+                <li><strong>Tasker Intent</strong> &ndash; Send a broadcast intent for Tasker/Automate.</li>
+            </ul>
+        </div>
+    </details>
+
+    <details>
+        <summary>How do I set up a Webhook?</summary>
+        <div class="answer">
+            <p>Create an event-action rule, select <strong>Webhook</strong> as the action, and configure:</p>
+            <ol>
+                <li><strong>URL</strong> &ndash; The endpoint to call.</li>
+                <li><strong>HTTP Method</strong> &ndash; GET, POST, PUT, PATCH, or DELETE.</li>
+                <li><strong>Headers</strong> &ndash; Optional custom headers (e.g., Content-Type).</li>
+                <li><strong>Body</strong> &ndash; Optional request body (for POST/PUT/PATCH). Supports template variables.</li>
+                <li><strong>Authentication</strong> &ndash; Optional: Bearer token, Basic auth, or API Key.</li>
+                <li><strong>Retries</strong> &ndash; Number of retry attempts on failure.</li>
+                <li><strong>Timeout</strong> &ndash; Request timeout in seconds.</li>
+            </ol>
+            <p><strong>Example:</strong> To send a POST request when a counter reaches 100:</p>
+            <pre><code>Event: Reached Value = 100
+Action: Webhook
+  URL: https://your-api.com/notify
+  Method: POST
+  Body: {"counter": "{{title}}", "value": {{value}}}</code></pre>
+        </div>
+    </details>
+
+    <details>
+        <summary>How do I set up Telegram notifications?</summary>
+        <div class="answer">
+            <p>To receive Telegram messages when events trigger:</p>
+            <ol>
+                <li>Create a Telegram bot via <strong>@BotFather</strong> on Telegram and copy the <strong>bot token</strong>.</li>
+                <li>Start a conversation with your bot, then find your <strong>chat ID</strong> (you can use @userinfobot or @RawDataBot).</li>
+                <li>In the app, create an event-action rule and select <strong>Telegram Message</strong> as the action.</li>
+                <li>Enter your <strong>bot token</strong> and <strong>chat ID</strong>.</li>
+                <li>Write your message text. You can use template variables for dynamic content.</li>
+            </ol>
+        </div>
+    </details>
+
+    <details>
+        <summary>How does Tasker/Automate integration work?</summary>
+        <div class="answer">
+            <p>The <strong>Tasker Intent</strong> action sends a broadcast intent that can be received by Tasker, Automate, or other automation apps on your device.</p>
+            <p>The intent includes counter data (ID, value, title) and you can add custom extras. This lets you trigger complex automations on your phone based on counter events.</p>
+            <p><strong>Example:</strong> Turn on a smart light when a counter reaches a target value by chaining Counter &rarr; Tasker Intent &rarr; Tasker HTTP Request to your smart home API.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>Can I chain multiple actions on a single event?</summary>
+        <div class="answer">
+            <p>Yes. You can create multiple event-action rules for the same counter and event. Each rule can have a different action, so when the event fires, all matching actions execute.</p>
+        </div>
+    </details>
+</section>
+
+<!-- ===== INTEGRATIONS ===== -->
+<section id="integrations">
+    <h2>Integrations (NFC, Widgets, External)</h2>
+
+    <details>
+        <summary>How do NFC tags work with Counter?</summary>
+        <div class="answer">
+            <p>You can write NFC tags that increment, decrement, or reset a specific counter just by tapping your phone on the tag.</p>
+            <p>To set up an NFC tag:</p>
+            <ol>
+                <li>Open a counter's detail screen.</li>
+                <li>Select the NFC write option.</li>
+                <li>Choose the action: <strong>Increment</strong>, <strong>Decrement</strong>, or <strong>Reset</strong>.</li>
+                <li>Optionally set a custom step value.</li>
+                <li>Hold an NFC tag near your phone to write it.</li>
+            </ol>
+            <p>Once written, simply tap the tag to trigger the action &mdash; even from the lock screen if NFC is enabled system-wide.</p>
+            <p>You can enable or disable NFC reading in <strong>Settings</strong>.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>What widgets are available?</summary>
+        <div class="answer">
+            <p>Counter offers two widget types for your home screen:</p>
+            <ul>
+                <li><strong>Standard Widget</strong> &ndash; Shows the counter name, value, and +/&minus;/reset buttons. Allows full interaction directly from the home screen.</li>
+                <li><strong>Compact Widget</strong> &ndash; A minimal 1&times;1 widget showing just the counter title and value. Tap to increment.</li>
+            </ul>
+            <p>To add a widget, long-press your home screen, select Widgets, and find Counter in the list.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>What is the External Intent Receiver?</summary>
+        <div class="answer">
+            <p>The External Intent Receiver allows other apps to control your counters via Android broadcast intents. This is useful for advanced automation with Tasker, Automate, or custom scripts.</p>
+            <p><strong>Setup:</strong></p>
+            <ol>
+                <li>Enable it in <strong>Settings &gt; External Integration</strong>.</li>
+                <li>Optionally configure an authentication token for security.</li>
+            </ol>
+            <p><strong>Supported commands:</strong></p>
+            <ul>
+                <li><code>increment</code> &ndash; Increase counter value (optional custom value).</li>
+                <li><code>decrement</code> &ndash; Decrease counter value (optional custom value).</li>
+                <li><code>reset</code> &ndash; Reset counter to its reset value.</li>
+                <li><code>set_value</code> &ndash; Set counter to a specific value.</li>
+            </ul>
+            <p><strong>Intent format:</strong></p>
+            <pre><code>Action: com.zipangulu.counter.ACTION_EXTERNAL_COMMAND
+Extras:
+  counter_id (long) - required
+  command (string)  - required
+  value (int)       - optional
+  auth_token (string) - if authentication is enabled</code></pre>
+            <p><strong>Tasker example:</strong> Send Intent action <code>com.zipangulu.counter.ACTION_EXTERNAL_COMMAND</code> with extras <code>counter_id: 1</code> and <code>command: increment</code>.</p>
+        </div>
+    </details>
+</section>
+
+<!-- ===== OTHER ===== -->
+<section id="other">
+    <h2>Other</h2>
+
+    <details>
+        <summary>What does the Premium version include?</summary>
+        <div class="answer">
+            <p>The Premium version removes all ads from the app. All features are available in the free version &mdash; Premium is a way to support development while enjoying an ad-free experience.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>Is my data safe? Does Counter collect personal information?</summary>
+        <div class="answer">
+            <p>All your counter data is stored locally on your device. Counter does not send your counter data to any external server. Firebase Crashlytics and Analytics are used to improve app stability and understand general usage patterns, but no personal counter data is shared.</p>
+            <p>You can review the full Privacy Policy from <strong>Settings &gt; Privacy Policy</strong>.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>How do I contact support?</summary>
+        <div class="answer">
+            <p>Go to <strong>Settings &gt; Contact Support</strong>. This will open your email app with diagnostic information pre-filled to help us assist you faster.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>Can I delete all my data?</summary>
+        <div class="answer">
+            <p>Yes. Go to <strong>Settings &gt; Backup &gt; Delete all data</strong>. This will permanently delete all counters, categories, goals, challenges, automations, and logs. This action cannot be undone, so consider exporting a backup first.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>The app is in the wrong language. How do I change it?</summary>
+        <div class="answer">
+            <p>Counter follows your device's system language. To change the app language, go to your device's <strong>Settings &gt; Apps &gt; Counter &gt; Language</strong> (on Android 13+), or change your device language in <strong>Settings &gt; System &gt; Language</strong>.</p>
+            <p>Supported languages: English, German, Spanish, French, Italian, Portuguese, Russian, Chinese.</p>
+        </div>
+    </details>
+</section>
+
+<footer>
+    <p>Counter &mdash; <a href="mailto:support@counterautomate.com">Contact us</a></p>
+</footer>
+
+</body>
+</html>
