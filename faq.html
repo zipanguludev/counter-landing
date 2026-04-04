@@ -215,9 +215,9 @@
     <ul>
         <li><a href="#basics">Basics</a></li>
         <li><a href="#advanced">Advanced Counters</a></li>
-        <li><a href="#goals">Goals &amp; Challenges</a></li>
         <li><a href="#automations">Automations (Events &amp; Actions)</a></li>
         <li><a href="#integrations">Integrations (NFC, Widgets, External)</a></li>
+        <li><a href="#goals">Goals &amp; Challenges</a></li>
         <li><a href="#other">Other</a></li>
     </ul>
 </nav>
@@ -355,40 +355,6 @@
     </details>
 </section>
 
-<!-- ===== GOALS & CHALLENGES ===== -->
-<section id="goals">
-    <h2>Goals &amp; Challenges</h2>
-
-    <details>
-        <summary>What types of goals can I set?</summary>
-        <div class="answer">
-            <p>There are four goal types:</p>
-            <ul>
-                <li><strong>Reach Value</strong> &ndash; Reach a specific target value (e.g., count to 100).</li>
-                <li><strong>Reach by Date</strong> &ndash; Reach a target value before a deadline date.</li>
-                <li><strong>Range Goal</strong> &ndash; Keep the counter value between a minimum and maximum bound.</li>
-                <li><strong>Decrease Goal</strong> &ndash; Reduce the counter below a specific target value.</li>
-            </ul>
-            <p>Each goal can have a priority (Low, Medium, High) and can auto-complete when the target is reached.</p>
-        </div>
-    </details>
-
-    <details>
-        <summary>Do I get notified when I reach a goal?</summary>
-        <div class="answer">
-            <p>Yes. The app monitors your goals in the background and sends a notification when a goal is reached or when a deadline is approaching. You can see your goal progress on the <strong>Goals</strong> tab.</p>
-        </div>
-    </details>
-
-    <details>
-        <summary>What are Challenges?</summary>
-        <div class="answer">
-            <p>Challenges let you compete by counting as fast as possible. Create a challenge, add one or more counters, and optionally set a <strong>timer</strong> (in seconds). When the challenge starts, all selected counters can optionally be reset to zero. The challenge play screen tracks progress in real-time.</p>
-            <p>Challenges are great for competitive counting games or timed exercises.</p>
-        </div>
-    </details>
-</section>
-
 <!-- ===== AUTOMATIONS ===== -->
 <section id="automations">
     <h2>Automations (Events &amp; Actions)</h2>
@@ -437,7 +403,7 @@
                 <li><strong>Double Counter Value</strong> &ndash; Double the current counter value.</li>
                 <li><strong>Set Counter Color</strong> &ndash; Change the counter's color.</li>
                 <li><strong>Set Counter Title</strong> &ndash; Change the counter's title.</li>
-                <li><strong>Tasker Intent</strong> &ndash; Send a broadcast intent for Tasker/Automate.</li>
+                <li><strong>Tasker Intent</strong> &ndash; Send a broadcast intent for Tasker/Automate/Macrodroid.</li>
             </ul>
         </div>
     </details>
@@ -479,9 +445,9 @@ Action: Webhook
     </details>
 
     <details>
-        <summary>How does Tasker/Automate integration work?</summary>
+        <summary>How does Tasker/Automate/Macrodroid integration work?</summary>
         <div class="answer">
-            <p>The <strong>Tasker Intent</strong> action sends a broadcast intent that can be received by Tasker, Automate, or other automation apps on your device.</p>
+            <p>The <strong>Tasker Intent</strong> action sends a broadcast intent that can be received by Tasker, Automate, Macrodroid, or other automation apps on your device.</p>
             <p>The intent includes counter data (ID, value, title) and you can add custom extras. This lets you trigger complex automations on your phone based on counter events.</p>
             <p><strong>Example:</strong> Turn on a smart light when a counter reaches a target value by chaining Counter &rarr; Tasker Intent &rarr; Tasker HTTP Request to your smart home API.</p>
         </div>
@@ -531,7 +497,7 @@ Action: Webhook
     <details>
         <summary>What is the External Intent Receiver?</summary>
         <div class="answer">
-            <p>The External Intent Receiver allows other apps to control your counters via Android broadcast intents. This is useful for advanced automation with Tasker, Automate, or custom scripts.</p>
+            <p>The External Intent Receiver allows other apps to control your counters via Android broadcast intents. This is useful for advanced automation with Tasker, Automate, Macrodroid, or custom scripts.</p>
             <p><strong>Setup:</strong></p>
             <ol>
                 <li>Enable it in <strong>Settings &gt; External Integration</strong>.</li>
@@ -552,6 +518,40 @@ Extras:
   value (int)       - optional
   auth_token (string) - if authentication is enabled</code></pre>
             <p><strong>Tasker example:</strong> Send Intent action <code>com.zipangulu.counter.ACTION_EXTERNAL_COMMAND</code> with extras <code>counter_id: 1</code> and <code>command: increment</code>.</p>
+        </div>
+    </details>
+</section>
+
+<!-- ===== GOALS & CHALLENGES ===== -->
+<section id="goals">
+    <h2>Goals &amp; Challenges</h2>
+
+    <details>
+        <summary>What types of goals can I set?</summary>
+        <div class="answer">
+            <p>There are four goal types:</p>
+            <ul>
+                <li><strong>Reach Value</strong> &ndash; Reach a specific target value (e.g., count to 100).</li>
+                <li><strong>Reach by Date</strong> &ndash; Reach a target value before a deadline date.</li>
+                <li><strong>Range Goal</strong> &ndash; Keep the counter value between a minimum and maximum bound.</li>
+                <li><strong>Decrease Goal</strong> &ndash; Reduce the counter below a specific target value.</li>
+            </ul>
+            <p>Each goal can have a priority (Low, Medium, High) and can auto-complete when the target is reached.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>Do I get notified when I reach a goal?</summary>
+        <div class="answer">
+            <p>Yes. The app monitors your goals in the background and sends a notification when a goal is reached or when a deadline is approaching. You can see your goal progress on the <strong>Goals</strong> tab.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>What are Challenges?</summary>
+        <div class="answer">
+            <p>Challenges let you compete by counting as fast as possible. Create a challenge, add one or more counters, and optionally set a <strong>timer</strong> (in seconds). When the challenge starts, all selected counters can optionally be reset to zero. The challenge play screen tracks progress in real-time.</p>
+            <p>Challenges are great for competitive counting games or timed exercises.</p>
         </div>
     </details>
 </section>
