@@ -459,6 +459,15 @@ Action: Webhook
             <p>Yes. You can create multiple event-action rules for the same counter and event. Each rule can have a different action, so when the event fires, all matching actions execute.</p>
         </div>
     </details>
+
+    <details>
+        <summary>Can an automatic action trigger another event (event chaining)?</summary>
+        <div class="answer">
+            <p>Yes. When an action modifies a counter (for example <strong>Increment Another Counter</strong>, <strong>Decrement Another Counter</strong>, <strong>Double Counter Value</strong>, or <strong>Reset Counter</strong>), the resulting change can in turn trigger events configured on that target counter, which can execute their own actions, and so on.</p>
+            <p>Event propagation is configurable <strong>per rule</strong>: when you create or edit an event-action rule, you can choose whether its action is allowed to propagate further events. By default, this lets you build chains of automations: for example, incrementing counter A triggers an action that resets counter B, which in turn triggers a Telegram notification.</p>
+            <p>To prevent infinite loops (e.g., counter A increments B, B increments A), the app includes <strong>cycle protection</strong> that detects repeating event-action chains and stops propagation automatically.</p>
+        </div>
+    </details>
 </section>
 
 <!-- ===== INTEGRATIONS ===== -->
