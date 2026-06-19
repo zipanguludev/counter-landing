@@ -6,6 +6,20 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#0a0a0f">
 <meta name="author" content="CounterAutomate">
+
+<!-- set theme before paint to avoid a flash of the wrong theme -->
+<script>
+  (function(){
+    try{
+      var saved = localStorage.getItem('ca-theme');
+      var theme = saved || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+      var m = document.querySelector('meta[name="theme-color"]');
+      if(m) m.setAttribute('content', theme === 'light' ? '#f6f6fb' : '#0a0a0f');
+    }catch(e){}
+  })();
+</script>
+
 <title>Counter App — Track Habits, Goals & Finances with Smart Automations | Android</title>
 <meta name="description" content="Free Android counter app (tally counter) with webhooks, NFC tags, Tasker integration, Home Assistant support, automated actions, calculated views, goal tracking, and statistics. Track habits, finances, and anything you can count.">
 <meta name="keywords" content="counter app, tally counter, habit tracker, goal tracker android, counter with automations, webhook counter, NFC counter, tasker counter, home assistant counter, calculated counter, android widget counter, free counter app, smart home counter">
@@ -921,6 +935,53 @@ footer a:hover { color: var(--accent-light); }
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ===== THEME TOGGLE ===== */
+.nav-right { display: flex; align-items: center; gap: 18px; }
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.03);
+  color: var(--text-primary); cursor: pointer; padding: 0;
+  transition: border-color .2s, transform .18s, background .2s;
+}
+.theme-toggle:hover { border-color: var(--accent); transform: translateY(-1px); }
+.theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.theme-toggle svg { width: 18px; height: 18px; display: block; }
+.theme-toggle .icon-sun { display: block; }
+.theme-toggle .icon-moon { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+/* ===== LIGHT THEME ===== */
+:root { color-scheme: dark; }
+:root[data-theme="light"] {
+  --bg-primary: #f6f6fb;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f1f8;
+  --accent-light: #5a47d4;
+  --text-primary: #16161f;
+  --text-secondary: #54546a;
+  --text-muted: #9090a2;
+  --border: rgba(20,20,40,0.08);
+  color-scheme: light;
+}
+:root[data-theme="light"] body::before { opacity: 0; }
+:root[data-theme="light"] .orb { opacity: 0.18; }
+:root[data-theme="light"] nav { background: rgba(246,246,251,0.8); }
+:root[data-theme="light"] nav.open .nav-links { background: rgba(246,246,251,0.97); }
+:root[data-theme="light"] .theme-toggle { border-color: rgba(20,20,40,0.14); background: rgba(20,20,40,0.03); }
+:root[data-theme="light"] .btn-secondary { border-color: rgba(20,20,40,0.14); }
+:root[data-theme="light"] .feature-tag,
+:root[data-theme="light"] .integration-tag { background: rgba(20,20,40,0.03); }
+:root[data-theme="light"] .highlight-card:hover,
+:root[data-theme="light"] .integration-card:hover { border-color: rgba(20,20,40,0.12); }
+:root[data-theme="light"] .btn-google-play { background: #16161f; color: #fff; }
+:root[data-theme="light"] .btn-google-play:hover { box-shadow: 0 12px 40px rgba(20,20,40,0.18); }
+:root[data-theme="light"] .phone-mockup img { box-shadow: 0 40px 80px rgba(30,30,60,0.16), 0 0 0 1px rgba(20,20,40,0.06), 0 0 80px var(--accent-glow); }
+:root[data-theme="light"] .feature-phone img { box-shadow: 0 30px 60px rgba(30,30,60,0.14), 0 0 0 1px rgba(20,20,40,0.06); }
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2BK2MG308F"></script>
   <script>
@@ -941,6 +1002,7 @@ footer a:hover { color: var(--accent-light); }
       <img src="img/logo.webp" alt="Counter Logo" class="nav-logo-img">
       <span>Counter</span>
     </a>
+    <div class="nav-right">
     <ul class="nav-links" id="navLinks">
       <li><a href="#features">Features</a></li>
       <li><a href="#integrations">Integrations</a></li>
@@ -954,9 +1016,14 @@ footer a:hover { color: var(--accent-light); }
         </a>
       </li>
     </ul>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.6A8 8 0 1 1 9.4 4 6.2 6.2 0 0 0 20 14.6z"/></svg>
+    </button>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
+    </div>
   </div>
 </nav>
 </header>
@@ -1371,6 +1438,38 @@ const cardObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.highlight-card, .integration-card').forEach(el => {
   cardObserver.observe(el);
 });
+</script>
+
+<script>
+// theme toggle (light / dark)
+(function(){
+  const root = document.documentElement;
+  const btn = document.getElementById('theme-toggle');
+  const meta = document.querySelector('meta[name="theme-color"]');
+  const COLOR = { dark:'#0a0a0f', light:'#f6f6fb' };
+  const get = () => root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+  function apply(theme){
+    root.setAttribute('data-theme', theme);
+    if(meta) meta.setAttribute('content', COLOR[theme]);
+    if(btn) btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+  }
+  apply(get());
+  if(btn){
+    btn.addEventListener('click', () => {
+      const next = get() === 'light' ? 'dark' : 'light';
+      apply(next);
+      try { localStorage.setItem('ca-theme', next); } catch(e){}
+      if(typeof gtag === 'function'){ gtag('event', 'theme_toggle', { theme: next }); }
+    });
+  }
+  if(window.matchMedia){
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+      let saved = null;
+      try { saved = localStorage.getItem('ca-theme'); } catch(_){}
+      if(!saved) apply(e.matches ? 'light' : 'dark');
+    });
+  }
+})();
 </script>
 
 </body>
