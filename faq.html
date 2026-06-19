@@ -221,6 +221,22 @@
             color: var(--text);
         }
 
+        .answer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .answer a:hover {
+            text-decoration: underline;
+        }
+
+        .answer .guide-hint {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+
         .answer code {
             background: var(--border);
             padding: 2px 6px;
@@ -530,6 +546,7 @@ Action: Webhook
   URL: https://your-api.com/notify
   Method: POST
   Body: {"counter": "{{title}}", "value": {{value}}}</code></pre>
+            <p class="guide-hint"><strong>Full walkthrough:</strong> see the <a href="home-assistant-counter.html">Home Assistant webhook guide</a>.</p>
         </div>
     </details>
 
@@ -544,6 +561,7 @@ Action: Webhook
                 <li>Enter your <strong>bot token</strong> and <strong>chat ID</strong>.</li>
                 <li>Write your message text. You can use template variables for dynamic content.</li>
             </ol>
+            <p class="guide-hint"><strong>Full walkthrough:</strong> see the <a href="telegram-counter.html">Telegram guide</a>.</p>
         </div>
     </details>
 
@@ -553,6 +571,7 @@ Action: Webhook
             <p>The <strong>Tasker Intent</strong> action sends a broadcast intent that can be received by Tasker, Automate, Macrodroid, or other automation apps on your device.</p>
             <p>The intent includes counter data (ID, value, title) and you can add custom extras. This lets you trigger complex automations on your phone based on counter events.</p>
             <p><strong>Example:</strong> Turn on a smart light when a counter reaches a target value by chaining Counter &rarr; Tasker Intent &rarr; Tasker HTTP Request to your smart home API.</p>
+            <p class="guide-hint"><strong>Full walkthrough:</strong> see the <a href="tasker-counter.html">Tasker and Automate guide</a>.</p>
         </div>
     </details>
 
@@ -591,6 +610,7 @@ Action: Webhook
             </ol>
             <p>Once written, simply tap the tag to trigger the action, even from the lock screen if NFC is enabled system-wide.</p>
             <p>You can enable or disable NFC reading in <strong>Settings</strong>.</p>
+            <p class="guide-hint"><strong>Full walkthrough:</strong> see the <a href="nfc-counter.html">NFC tags guide</a>.</p>
         </div>
     </details>
 
@@ -630,6 +650,7 @@ Extras:
   value (int)       - optional
   auth_token (string) - if authentication is enabled</code></pre>
             <p><strong>Tasker example:</strong> Send Intent action <code>com.zipangulu.counter.ACTION_EXTERNAL_COMMAND</code> with extras <code>counter_id: 1</code> and <code>command: increment</code>.</p>
+            <p class="guide-hint"><strong>Full walkthrough:</strong> see the <a href="tasker-counter.html">Tasker and Automate guide</a>.</p>
         </div>
     </details>
 </section>
@@ -712,6 +733,7 @@ Extras:
 
 <footer>
     <p><a href="index.html">Home</a> | <a href="https://play.google.com/store/apps/details?id=com.zipangulu.counter" target="_blank" rel="noopener">Google Play</a> | <a href="mailto:counterapphelp@gmail.com">Contact us</a></p>
+    <p>Guides: <a href="home-assistant-counter.html">Home Assistant</a> | <a href="tasker-counter.html">Tasker</a> | <a href="nfc-counter.html">NFC</a> | <a href="telegram-counter.html">Telegram</a></p>
 </footer>
 
 <script>
