@@ -3,7 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Counter App - FAQ</title>
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#4285f4">
+    <meta name="author" content="CounterAutomate">
+    <title>Counter App FAQ — Automations, Webhooks, NFC &amp; Widgets | Android</title>
+    <meta name="description" content="Answers to common questions about the Counter app for Android: creating counters, calculated views and formulas, events and actions, webhooks, Telegram, Tasker, NFC tags, widgets, goals, backups, and privacy.">
+
+    <link rel="canonical" href="https://counterautomate.com/faq.html">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/logo.webp">
+    <link rel="apple-touch-icon" href="img/logo.webp">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Counter App FAQ — Automations, Webhooks, NFC &amp; Widgets">
+    <meta property="og:description" content="Everything you need to know about the Counter app for Android: automations, webhooks, Telegram, Tasker, NFC tags, widgets, goals, and privacy.">
+    <meta property="og:image" content="https://counterautomate.com/img/og-image.webp">
+    <meta property="og:url" content="https://counterautomate.com/faq.html">
+    <meta property="og:site_name" content="Counter App">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Counter App FAQ — Automations, Webhooks, NFC &amp; Widgets">
+    <meta name="twitter:description" content="Everything you need to know about the Counter app for Android.">
+    <meta name="twitter:image" content="https://counterautomate.com/img/og-image.webp">
     <style>
         :root {
             --primary: #4285f4;
@@ -202,12 +224,57 @@
             text-decoration: none;
         }
     </style>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How do I create a counter?", "acceptedAnswer": { "@type": "Answer", "text": "Tap the + floating action button on the main screen, fill in the counter name, choose a color, set the initial value and increment/decrement steps, optionally assign a category, then tap Save." } },
+        { "@type": "Question", "name": "How do I increment or decrement a counter?", "acceptedAnswer": { "@type": "Answer", "text": "On the main screen, tap the + or - buttons on each counter card. You can also open the counter detail screen for more options, including setting a custom value." } },
+        { "@type": "Question", "name": "What are categories and how do I use them?", "acceptedAnswer": { "@type": "Answer", "text": "Categories let you organize counters into groups. Assign a counter to a category when creating or editing it, then display counters grouped by category using the Categorized view mode in Settings." } },
+        { "@type": "Question", "name": "How do I change the color of a counter?", "acceptedAnswer": { "@type": "Answer", "text": "Open the counter editor (long press a counter or tap the edit icon), tap the color circle and choose any color from the palette. The color is used for the counter card and charts." } },
+        { "@type": "Question", "name": "How do I reset a counter?", "acceptedAnswer": { "@type": "Answer", "text": "Open the counter detail screen and tap Reset. The counter returns to its configured reset value (default 0) and the reset is logged in the counter history." } },
+        { "@type": "Question", "name": "What is the PIN / private mode?", "acceptedAnswer": { "@type": "Answer", "text": "Set a PIN in Settings > Security to protect private counters. When a counter is marked private you must enter the PIN (or use biometric unlock) to view it. The PIN is stored securely as a hash." } },
+        { "@type": "Question", "name": "Can I use fingerprint to unlock private counters?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. In Settings > Security enable Biometric unlock. You must set a PIN first; afterwards you can use your fingerprint instead of the PIN." } },
+        { "@type": "Question", "name": "How do I change the layout or view mode?", "acceptedAnswer": { "@type": "Answer", "text": "In Settings you can configure the View mode (flat list or categorized), the Layout type (list or grid arrangement), and the Item template (different card styles for counters)." } },
+        { "@type": "Question", "name": "Can I change the app theme?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. In Settings choose between Light, Dark or System default, and optionally enable Dynamic Color (Material You) to use your device wallpaper-based color palette." } },
+        { "@type": "Question", "name": "What are View Counters (formulas)?", "acceptedAnswer": { "@type": "Answer", "text": "View Counters are computed counters whose value comes from a math formula referencing other counters using the c{id} syntax (for example c1 + c2). They update automatically when referenced counters change and support the + - * / % operators." } },
+        { "@type": "Question", "name": "How do I set custom increment/decrement steps?", "acceptedAnswer": { "@type": "Answer", "text": "When creating or editing a counter, set the Increment value and Decrement value fields. Each tap of + or - changes the counter by these amounts." } },
+        { "@type": "Question", "name": "Can I set minimum or maximum limits on a counter?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. In the counter editor set a minimum and/or maximum value. The counter will not go below the minimum or above the maximum, and out-of-range values are adapted automatically." } },
+        { "@type": "Question", "name": "How do I export and import my data?", "acceptedAnswer": { "@type": "Answer", "text": "Go to Settings > Backup. Export saves all your data (counters, categories, goals, challenges, automations, logs) as a JSON file you can store anywhere; Import restores data from a previously exported JSON file." } },
+        { "@type": "Question", "name": "What are counter effects?", "acceptedAnswer": { "@type": "Answer", "text": "Counter effects add visual feedback when you tap + or -. Choose an animation in Settings > Counter effects, or select None to disable them." } },
+        { "@type": "Question", "name": "How does the counter history/log work?", "acceptedAnswer": { "@type": "Answer", "text": "Every change is logged with the timestamp, new value, delta and whether it was a manual action, a reset or an automatic change. View the history from the counter detail screen and visualize trends with charts." } },
+        { "@type": "Question", "name": "What are Events & Actions?", "acceptedAnswer": { "@type": "Answer", "text": "The Events & Actions system automates tasks based on counter changes: you configure rules so that when an event occurs on a counter, one or more actions run automatically. Enable it in Settings > Events & Actions." } },
+        { "@type": "Question", "name": "What events are available?", "acceptedAnswer": { "@type": "Answer", "text": "There are 12 event types: Counter Updated, Reached Value, Reached Greater Value, Reached Less Value, Multiple of Value, Between Values, Even Value, Odd Value, Prime Value, Palindrome Value, Reached Max Value and Reached Min Value." } },
+        { "@type": "Question", "name": "What actions can I configure?", "acceptedAnswer": { "@type": "Answer", "text": "There are 11 action types: Show Notification, Toast Message, Webhook, Telegram Message, Reset Counter, Increment Another Counter, Decrement Another Counter, Double Counter Value, Set Counter Color, Set Counter Title and Tasker Intent." } },
+        { "@type": "Question", "name": "How do I set up a Webhook?", "acceptedAnswer": { "@type": "Answer", "text": "Create an event-action rule, select Webhook, and configure the URL, HTTP method (GET, POST, PUT, PATCH or DELETE), optional headers, an optional body with template variables, authentication (Bearer token, Basic auth or API key), retries and timeout." } },
+        { "@type": "Question", "name": "How do I set up Telegram notifications?", "acceptedAnswer": { "@type": "Answer", "text": "Create a Telegram bot via @BotFather and copy the bot token, find your chat ID (for example with @userinfobot), then create an event-action rule with the Telegram Message action and enter the bot token, chat ID and message text with optional template variables." } },
+        { "@type": "Question", "name": "How does Tasker/Automate/Macrodroid integration work?", "acceptedAnswer": { "@type": "Answer", "text": "The Tasker Intent action sends an Android broadcast intent that Tasker, Automate, MacroDroid or other automation apps can receive. The intent includes counter data (ID, value, title) plus custom extras, letting you trigger complex phone automations from counter events." } },
+        { "@type": "Question", "name": "Can I chain multiple actions on a single event?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can create multiple event-action rules for the same counter and event; when the event fires, all matching actions execute." } },
+        { "@type": "Question", "name": "Can an automatic action trigger another event (event chaining)?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. When an action modifies a counter (Increment or Decrement Another Counter, Double Counter Value, Reset Counter), the resulting change can trigger events on that target counter. Propagation is configurable per rule, and built-in cycle protection stops infinite loops automatically." } },
+        { "@type": "Question", "name": "How do NFC tags work with Counter?", "acceptedAnswer": { "@type": "Answer", "text": "You can write NFC tags that increment, decrement or reset a specific counter. Open a counter detail screen, choose the NFC write option and the action, optionally set a step value, then hold a tag near the phone to write it. Tap the tag afterwards to trigger the action, even from the lock screen." } },
+        { "@type": "Question", "name": "What widgets are available?", "acceptedAnswer": { "@type": "Answer", "text": "Counter offers two home screen widgets: a Standard Widget with name, value and +/-/reset buttons for full interaction, and a Compact 1x1 widget showing just the title and value that you tap to increment." } },
+        { "@type": "Question", "name": "What is the External Intent Receiver?", "acceptedAnswer": { "@type": "Answer", "text": "It lets other apps control your counters via Android broadcast intents. Enable it in Settings > External Integration, optionally set an auth token, and send the com.zipangulu.counter.ACTION_EXTERNAL_COMMAND intent with the commands increment, decrement, reset or set_value." } },
+        { "@type": "Question", "name": "What types of goals can I set?", "acceptedAnswer": { "@type": "Answer", "text": "There are four goal types: Reach Value, Reach by Date, Range Goal (keep the value between a minimum and maximum) and Decrease Goal. Each goal can have a priority (Low, Medium, High) and can auto-complete when the target is reached." } },
+        { "@type": "Question", "name": "Do I get notified when I reach a goal?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The app monitors your goals in the background and sends a notification when a goal is reached or a deadline is approaching. You can see progress on the Goals tab." } },
+        { "@type": "Question", "name": "What are Challenges?", "acceptedAnswer": { "@type": "Answer", "text": "Challenges let you count as fast as possible. Create a challenge, add one or more counters and optionally set a timer; counters can be reset to zero at the start, and the play screen tracks progress in real time." } },
+        { "@type": "Question", "name": "What does the Premium version include?", "acceptedAnswer": { "@type": "Answer", "text": "The Premium version removes all ads from the app. All features are available in the free version; Premium is a way to support development while enjoying an ad-free experience." } },
+        { "@type": "Question", "name": "Is my data safe? Does Counter collect personal information?", "acceptedAnswer": { "@type": "Answer", "text": "All your counter data is stored locally on your device and is not sent to any external server. Firebase Crashlytics and Analytics are used to improve stability and understand general usage patterns, but no personal counter data is shared." } },
+        { "@type": "Question", "name": "How do I contact support?", "acceptedAnswer": { "@type": "Answer", "text": "Go to Settings > Contact Support. This opens your email app with diagnostic information pre-filled to help us assist you faster." } },
+        { "@type": "Question", "name": "Can I delete all my data?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Go to Settings > Backup > Delete all data to permanently delete all counters, categories, goals, challenges, automations and logs. This action cannot be undone, so consider exporting a backup first." } },
+        { "@type": "Question", "name": "The app is in the wrong language. How do I change it?", "acceptedAnswer": { "@type": "Answer", "text": "Counter follows your device system language. Change it in Settings > Apps > Counter > Language (Android 13+) or via your device language settings. Supported languages: English, German, Spanish, French, Italian, Portuguese, Russian, Chinese." } }
+      ]
+    }
+    </script>
 </head>
 <body>
 
 <header>
     <h1>Counter - FAQ</h1>
     <p>Frequently Asked Questions</p>
+    <p><a href="index.html" style="color: var(--accent); text-decoration: none; font-size: 14px;">&larr; Back to Counter home</a></p>
 </header>
 
 <nav>
@@ -608,7 +675,7 @@ Extras:
 </section>
 
 <footer>
-    <p>Counter &mdash; <a href="mailto:counterapphelp@gmail.com">Contact us</a></p>
+    <p><a href="index.html">Home</a> &middot; <a href="https://play.google.com/store/apps/details?id=com.zipangulu.counter" target="_blank" rel="noopener">Google Play</a> &middot; <a href="mailto:counterapphelp@gmail.com">Contact us</a></p>
 </footer>
 
 </body>
