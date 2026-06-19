@@ -295,6 +295,7 @@
         { "@type": "Question", "name": "How does the counter history/log work?", "acceptedAnswer": { "@type": "Answer", "text": "Every change is logged with the timestamp, new value, delta and whether it was a manual action, a reset or an automatic change. View the history from the counter detail screen and visualize trends with charts." } },
         { "@type": "Question", "name": "What are Events & Actions?", "acceptedAnswer": { "@type": "Answer", "text": "The Events & Actions system automates tasks based on counter changes: you configure rules so that when an event occurs on a counter, one or more actions run automatically. Enable it in Settings > Events & Actions." } },
         { "@type": "Question", "name": "What events are available?", "acceptedAnswer": { "@type": "Answer", "text": "There are 12 event types: Counter Updated, Reached Value, Reached Greater Value, Reached Less Value, Multiple of Value, Between Values, Even Value, Odd Value, Prime Value, Palindrome Value, Reached Max Value and Reached Min Value." } },
+        { "@type": "Question", "name": "Can I trigger actions on a schedule (time-based events)?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Besides counter events, Counter has temporal (time-based) events that fire on a schedule, independently of counter changes: At specific date and time, Every day at time, Weekly on selected days, Monthly on specific day, and Every N minutes. Each targets a counter and can run any action, so you can reset a counter every day at 8:00, send a webhook on a schedule, or post a Telegram summary every Monday." } },
         { "@type": "Question", "name": "What actions can I configure?", "acceptedAnswer": { "@type": "Answer", "text": "There are 11 action types: Show Notification, Toast Message, Webhook, Telegram Message, Reset Counter, Increment Another Counter, Decrement Another Counter, Double Counter Value, Set Counter Color, Set Counter Title and Tasker Intent." } },
         { "@type": "Question", "name": "How do I set up a Webhook?", "acceptedAnswer": { "@type": "Answer", "text": "Create an event-action rule, select Webhook, and configure the URL, HTTP method (GET, POST, PUT, PATCH or DELETE), optional headers, an optional body with template variables, authentication (Bearer token, Basic auth or API key), retries and timeout." } },
         { "@type": "Question", "name": "How do I set up Telegram notifications?", "acceptedAnswer": { "@type": "Answer", "text": "Create a Telegram bot via @BotFather and copy the bot token, find your chat ID (for example with @userinfobot), then create an event-action rule with the Telegram Message action and enter the bot token, chat ID and message text with optional template variables." } },
@@ -504,6 +505,21 @@
                 <li><strong>Reached Max Value</strong>: Counter hits its configured maximum.</li>
                 <li><strong>Reached Min Value</strong>: Counter hits its configured minimum.</li>
             </ul>
+        </div>
+    </details>
+
+    <details>
+        <summary>Can I trigger actions on a schedule (time-based events)?</summary>
+        <div class="answer">
+            <p>Yes. Besides counter events, Counter has <strong>temporal (time-based) events</strong> that fire on a schedule, independently of counter changes. The temporal event types are:</p>
+            <ul>
+                <li><strong>At specific date and time</strong>: Fires once at a date and time you choose.</li>
+                <li><strong>Every day at time</strong>: Fires daily at the configured hour and minute.</li>
+                <li><strong>Weekly on selected days</strong>: Fires on the days of the week you pick.</li>
+                <li><strong>Monthly on specific day</strong>: Fires once a month on the chosen day.</li>
+                <li><strong>Every N minutes</strong>: Fires at a regular interval.</li>
+            </ul>
+            <p>Each temporal event targets a counter and can run any action: reset or change a counter, send a webhook, post to Telegram, fire a Tasker intent, and more. For example, reset a water counter <strong>every day at 8:00</strong>, or send a Telegram summary <strong>every Monday</strong>.</p>
         </div>
     </details>
 

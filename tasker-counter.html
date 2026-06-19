@@ -111,7 +111,7 @@
 
   <h2>Direction A: a counter triggers Tasker</h2>
   <ol class="steps">
-    <li>In Counter, open the counter, go to <strong>Events &amp; Actions</strong>, and add a rule. Pick an event (Reached Value, Counter Updated, and so on).</li>
+    <li>In Counter, open the counter, go to <strong>Events &amp; Actions</strong>, and add a rule. Pick an event (Reached Value, Counter Updated, or a time-based event like Every day at a time).</li>
     <li>Choose the <strong>Tasker Intent</strong> action. Counter sends a broadcast intent carrying the counter data (id, value, title) plus any custom extras you add.</li>
     <li>In Tasker, create a <strong>Profile &gt; Event &gt; System &gt; Intent Received</strong> and set the action filter to match the broadcast.</li>
     <li>Attach a Task that does what you want: toggle Bluetooth, send an SMS, launch an app, or call a web service.</li>
