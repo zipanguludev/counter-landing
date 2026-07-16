@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#121212">
+    <meta name="author" content="CounterAutomate">
+    <title>Privacy Policy | Counter App for Android</title>
+    <meta name="description" content="Privacy Policy for the Counter app for Android: how your data is stored, how automatic backup works with your own Google account, notifications, advertising ID and third-party services.">
+
+    <link rel="canonical" href="https://counterautomate.com/privacy-policy.html">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/logo.webp">
+    <link rel="apple-touch-icon" href="img/logo.webp">
+
+    <!-- set theme before paint to avoid a flash of the wrong theme -->
+    <script>
+      (function(){
+        try{
+          var saved = localStorage.getItem('ca-theme');
+          var theme = saved || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark');
+          document.documentElement.setAttribute('data-theme', theme);
+          var m = document.querySelector('meta[name="theme-color"]');
+          if(m) m.setAttribute('content', theme === 'light' ? '#fafafa' : '#121212');
+        }catch(e){}
+      })();
+    </script>
+
+    <style>
+        :root {
+            --primary: #4285f4;
+            --primary-dark: #3367d6;
+            --bg: #121212;
+            --card-bg: #1e1e1e;
+            --text: #e0e0e0;
+            --text-secondary: #aaaaaa;
+            --border: #333333;
+            --accent: #8ab4f8;
+            color-scheme: dark;
+        }
+
+        :root[data-theme="light"] {
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --text: #212121;
+            --text-secondary: #616161;
+            --border: #e0e0e0;
+            --accent: #1a73e8;
+            color-scheme: light;
+        }
+
+        .theme-toggle {
+            position: fixed; top: 14px; right: 14px; z-index: 100;
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px; border-radius: 50%;
+            border: 1px solid var(--border); background: var(--card-bg);
+            color: var(--text); cursor: pointer; padding: 0;
+            transition: border-color .2s, transform .18s;
+        }
+        .theme-toggle:hover { border-color: var(--accent); transform: translateY(-1px); }
+        .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        .theme-toggle svg { width: 18px; height: 18px; display: block; }
+        .theme-toggle .icon-sun { display: block; }
+        .theme-toggle .icon-moon { display: none; }
+        :root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+        :root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 0 16px 40px;
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 32px 0 20px;
+        }
+
+        header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        header p {
+            color: var(--text-secondary);
+            margin-top: 4px;
+            font-size: 15px;
+        }
+
+        header a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        header a:hover {
+            text-decoration: underline;
+        }
+
+        .updated {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-style: italic;
+            margin-bottom: 24px;
+        }
+
+        section {
+            margin-bottom: 28px;
+        }
+
+        section > h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent);
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 14px;
+        }
+
+        section p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        section ul {
+            margin: 8px 0 10px 20px;
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        section li {
+            margin-bottom: 6px;
+        }
+
+        section strong {
+            color: var(--text);
+        }
+
+        section a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        section a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px 0;
+            color: var(--text-secondary);
+            font-size: 13px;
+            border-top: 1px solid var(--border);
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme">
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.6A8 8 0 1 1 9.4 4 6.2 6.2 0 0 0 20 14.6z"/></svg>
+</button>
+
+<header>
+    <h1>Privacy Policy</h1>
+    <p>Counter App for Android</p>
+    <p><a href="index.html">&larr; Back to Counter home</a></p>
+</header>
+
+<p class="updated">Last updated: 1 July 2026</p>
+
+<main>
+    <section>
+        <h2>Information About Us</h2>
+        <p>This application is developed and maintained by Claudio Pellegrino, referred to as "we", "our", or "us" in this document. For any inquiries regarding this Privacy Policy, you can contact us at <a href="mailto:zipangulu.dev@gmail.com">zipangulu.dev@gmail.com</a>.</p>
+    </section>
+
+    <section>
+        <h2>Your Data, Storage and Backup</h2>
+        <p>Your counter data (counters, categories, goals, challenges, automations and logs) is stored on your device. <strong>We do not send your counter data to our servers</strong>, and we never use it for advertising.</p>
+        <p><strong>Automatic backup.</strong> If Android Backup is enabled on your device (Settings &gt; Google &gt; Backup), the app relies on Android's built-in backup system to store an encrypted copy of your data in <strong>your own Google account</strong> (Google Drive). This copy resides in your account, is governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>, and <strong>we have no access to it</strong>. It is used only to restore your data when you set up a new device or reinstall the app.</p>
+        <p><strong>Private counters stay on your device.</strong> Counters you protect with a PIN or biometric unlock, together with your PIN/biometric settings, are <strong>never included</strong> in the automatic cloud backup and remain only on your device.</p>
+        <p><strong>Manual backup.</strong> You can also export a full backup (including private counters) to a JSON file from Settings &gt; Backup and store it wherever you like. That file is created and handled entirely by you.</p>
+    </section>
+
+    <section>
+        <h2>Non-Personally Identifiable Information We Use</h2>
+        <p><strong>Android Advertising ID</strong> &mdash; an advertising ID is a non-persistent, resettable identifier of your device that is used for advertising and analytics purposes.</p>
+    </section>
+
+    <section>
+        <h2>Notifications</h2>
+        <p>Our app may request permission to send you local notifications. These notifications are used solely to inform you about updates, counters reaching certain values, or other automated actions that you configure within the app. We do not use notifications for advertising purposes without your explicit consent.</p>
+    </section>
+
+    <section>
+        <h2>Third-Party Service Providers</h2>
+        <p>The following third-party services may use the advertising ID within our app. Please review their privacy policies:</p>
+        <ul>
+            <li><a href="https://firebase.google.com/support/privacy/" target="_blank" rel="noopener">Google Analytics for Firebase</a> (usage analysis)</li>
+            <li><a href="https://firebase.google.com/support/privacy/" target="_blank" rel="noopener">Crashlytics</a> (crash reporting)</li>
+            <li><a href="https://support.google.com/admob/answer/6128543?hl=en" target="_blank" rel="noopener">AdMob</a> (advertising)</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Changes to This Privacy Policy</h2>
+        <p>We may amend this Privacy Policy from time to time at our sole discretion. If we make material changes in the way we collect or use your personal information, the changes will be posted on this page 30 days prior to taking effect. We encourage you to stay informed by reviewing this Privacy Policy periodically.</p>
+    </section>
+
+    <section>
+        <h2>How to Contact Us</h2>
+        <p>If you have any questions about this Privacy Policy or our privacy practices, please contact us by email at <a href="mailto:zipangulu.dev@gmail.com">zipangulu.dev@gmail.com</a>.</p>
+    </section>
+</main>
+
+<footer>
+    <p><a href="index.html">Home</a> | <a href="faq.html">FAQ</a> | <a href="https://play.google.com/store/apps/details?id=com.zipangulu.counter" target="_blank" rel="noopener">Google Play</a> | <a href="mailto:zipangulu.dev@gmail.com">Contact us</a></p>
+</footer>
+
+<script>
+// theme toggle (light / dark)
+(function(){
+  const root = document.documentElement;
+  const btn = document.getElementById('theme-toggle');
+  const meta = document.querySelector('meta[name="theme-color"]');
+  const COLOR = { dark:'#121212', light:'#fafafa' };
+  const get = () => root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+  function apply(theme){
+    root.setAttribute('data-theme', theme);
+    if(meta) meta.setAttribute('content', COLOR[theme]);
+    if(btn) btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+  }
+  apply(get());
+  if(btn){
+    btn.addEventListener('click', () => {
+      const next = get() === 'light' ? 'dark' : 'light';
+      apply(next);
+      try { localStorage.setItem('ca-theme', next); } catch(e){}
+    });
+  }
+  if(window.matchMedia){
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+      let saved = null;
+      try { saved = localStorage.getItem('ca-theme'); } catch(_){}
+      if(!saved) apply(e.matches ? 'light' : 'dark');
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

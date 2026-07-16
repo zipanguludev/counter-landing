@@ -290,7 +290,8 @@
         { "@type": "Question", "name": "What are View Counters (formulas)?", "acceptedAnswer": { "@type": "Answer", "text": "View Counters are computed counters whose value comes from a math formula referencing other counters using the c{id} syntax (for example c1 + c2). They update automatically when referenced counters change and support the + - * / % operators." } },
         { "@type": "Question", "name": "How do I set custom increment/decrement steps?", "acceptedAnswer": { "@type": "Answer", "text": "When creating or editing a counter, set the Increment value and Decrement value fields. Each tap of + or - changes the counter by these amounts." } },
         { "@type": "Question", "name": "Can I set minimum or maximum limits on a counter?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. In the counter editor set a minimum and/or maximum value. The counter will not go below the minimum or above the maximum, and out-of-range values are adapted automatically." } },
-        { "@type": "Question", "name": "How do I export and import my data?", "acceptedAnswer": { "@type": "Answer", "text": "Go to Settings > Backup. Export saves all your data (counters, categories, goals, challenges, automations, logs) as a JSON file you can store anywhere; Import restores data from a previously exported JSON file." } },
+        { "@type": "Question", "name": "How do I export and import my data?", "acceptedAnswer": { "@type": "Answer", "text": "Go to Settings > Backup. Export saves all your data (counters, categories, goals, challenges, automations, logs) as a JSON file you can store anywhere; this is a full backup and includes private counters. Import restores data from a previously exported JSON file." } },
+        { "@type": "Question", "name": "Does my data get backed up automatically?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, if Android Backup is enabled on your device. Counter uses Android's built-in backup to store an encrypted copy of your data in your own Google account, so counters are restored automatically on a new phone or reinstall. Private PIN-protected counters and your PIN are never sent to the cloud and stay only on your device; use the manual JSON export to back those up too." } },
         { "@type": "Question", "name": "What are counter effects?", "acceptedAnswer": { "@type": "Answer", "text": "Counter effects add visual feedback when you tap + or -. Choose an animation in Settings > Counter effects, or select None to disable them." } },
         { "@type": "Question", "name": "How does the counter history/log work?", "acceptedAnswer": { "@type": "Answer", "text": "Every change is logged with the timestamp, new value, delta and whether it was a manual action, a reset or an automatic change. View the history from the counter detail screen and visualize trends with charts." } },
         { "@type": "Question", "name": "What are Events & Actions?", "acceptedAnswer": { "@type": "Answer", "text": "The Events & Actions system automates tasks based on counter changes: you configure rules so that when an event occurs on a counter, one or more actions run automatically. Enable it in Settings > Events & Actions." } },
@@ -309,7 +310,7 @@
         { "@type": "Question", "name": "Do I get notified when I reach a goal?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The app monitors your goals in the background and sends a notification when a goal is reached or a deadline is approaching. You can see progress on the Goals tab." } },
         { "@type": "Question", "name": "What are Challenges?", "acceptedAnswer": { "@type": "Answer", "text": "Challenges let you count as fast as possible. Create a challenge, add one or more counters and optionally set a timer; counters can be reset to zero at the start, and the play screen tracks progress in real time." } },
         { "@type": "Question", "name": "What does the Premium version include?", "acceptedAnswer": { "@type": "Answer", "text": "The Premium version removes all ads from the app. All features are available in the free version; Premium is a way to support development while enjoying an ad-free experience." } },
-        { "@type": "Question", "name": "Is my data safe? Does Counter collect personal information?", "acceptedAnswer": { "@type": "Answer", "text": "All your counter data is stored locally on your device and is not sent to any external server. Firebase Crashlytics and Analytics are used to improve stability and understand general usage patterns, but no personal counter data is shared." } },
+        { "@type": "Question", "name": "Is my data safe? Does Counter collect personal information?", "acceptedAnswer": { "@type": "Answer", "text": "Counter does not send your counter data to our servers and never uses it for advertising. If Android Backup is enabled, an encrypted copy of your non-private data is stored in your own Google account and we have no access to it; private PIN-protected counters stay only on your device. Firebase Crashlytics and Analytics are used to improve stability and understand general usage patterns, but no personal counter data is shared." } },
         { "@type": "Question", "name": "How do I contact support?", "acceptedAnswer": { "@type": "Answer", "text": "Go to Settings > Contact Support. This opens your email app with diagnostic information pre-filled to help us assist you faster." } },
         { "@type": "Question", "name": "Can I delete all my data?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Go to Settings > Backup > Delete all data to permanently delete all counters, categories, goals, challenges, automations and logs. This action cannot be undone, so consider exporting a backup first." } },
         { "@type": "Question", "name": "The app is in the wrong language. How do I change it?", "acceptedAnswer": { "@type": "Answer", "text": "Counter follows your device system language. Change it in Settings > Apps > Counter > Language (Android 13+) or via your device language settings. Supported languages: English, German, Spanish, French, Italian, Portuguese, Russian, Chinese." } }
@@ -453,10 +454,18 @@
         <div class="answer">
             <p>Go to <strong>Settings &gt; Backup</strong>:</p>
             <ul>
-                <li><strong>Export</strong>: Saves all your data (counters, categories, goals, challenges, automations, logs) as a JSON file you can store anywhere.</li>
+                <li><strong>Export</strong>: Saves all your data (counters, categories, goals, challenges, automations, logs) as a JSON file you can store anywhere. This is a full backup and includes your private counters.</li>
                 <li><strong>Import</strong>: Restores data from a previously exported JSON file.</li>
             </ul>
-            <p>This is useful for backing up your data or transferring to a new device.</p>
+            <p>This is useful for keeping your own backup or moving everything to a new device, even across different Google accounts.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>Does my data get backed up automatically?</summary>
+        <div class="answer">
+            <p>Yes, if Android Backup is enabled on your device (<strong>Settings &gt; Google &gt; Backup</strong>). Counter uses Android's built-in backup to store an encrypted copy of your data in <strong>your own Google account</strong>, so your counters are restored automatically when you set up a new phone or reinstall the app. The backup lives in your Google account &mdash; we can't see or access it.</p>
+            <p>Two things stay on your device and are never sent to the cloud: your <strong>private (PIN-protected) counters</strong> and your PIN/biometric settings. To back those up too, use the manual JSON <strong>Export</strong> above.</p>
         </div>
     </details>
 
@@ -719,7 +728,9 @@ Extras:
     <details>
         <summary>Is my data safe? Does Counter collect personal information?</summary>
         <div class="answer">
-            <p>All your counter data is stored locally on your device. Counter does not send your counter data to any external server. Firebase Crashlytics and Analytics are used to improve app stability and understand general usage patterns, but no personal counter data is shared.</p>
+            <p>Counter does not send your counter data to our servers and never uses it for advertising. Your counters live on your device. If Android Backup is turned on, an encrypted copy of your non-private data is stored in <strong>your own Google account</strong> (Google Drive) so it can be restored on a new phone &mdash; we have no access to it.</p>
+            <p>Your <strong>private (PIN-protected) counters</strong> and your PIN/biometric settings are never included in that backup and stay only on your device.</p>
+            <p>Firebase Crashlytics and Analytics are used to improve app stability and understand general usage patterns, but no personal counter data is shared.</p>
             <p>You can review the full Privacy Policy from <strong>Settings &gt; Privacy Policy</strong>.</p>
         </div>
     </details>
@@ -748,7 +759,7 @@ Extras:
 </section>
 
 <footer>
-    <p><a href="index.html">Home</a> | <a href="https://play.google.com/store/apps/details?id=com.zipangulu.counter" target="_blank" rel="noopener">Google Play</a> | <a href="mailto:counterapphelp@gmail.com">Contact us</a></p>
+    <p><a href="index.html">Home</a> | <a href="privacy-policy.html">Privacy Policy</a> | <a href="https://play.google.com/store/apps/details?id=com.zipangulu.counter" target="_blank" rel="noopener">Google Play</a> | <a href="mailto:counterapphelp@gmail.com">Contact us</a></p>
     <p>Guides: <a href="home-assistant-counter.html">Home Assistant</a> | <a href="tasker-counter.html">Tasker</a> | <a href="nfc-counter.html">NFC</a> | <a href="telegram-counter.html">Telegram</a></p>
 </footer>
 
