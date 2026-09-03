@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#0a0a0f">
+<meta name="theme-color" content="#0b1220">
 <meta name="author" content="CounterAutomate">
 
 <!-- set theme before paint to avoid a flash of the wrong theme -->
@@ -15,7 +15,7 @@
       var theme = saved || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark');
       document.documentElement.setAttribute('data-theme', theme);
       var m = document.querySelector('meta[name="theme-color"]');
-      if(m) m.setAttribute('content', theme === 'light' ? '#f6f6fb' : '#0a0a0f');
+      if(m) m.setAttribute('content', theme === 'light' ? '#f3f6fa' : '#0b1220');
     }catch(e){}
   })();
 </script>
@@ -67,7 +67,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="guide.css">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2BK2MG308F"></script>
@@ -99,7 +99,7 @@
 <main class="guide">
   <div class="breadcrumb"><a href="index.html">Home</a> / NFC counter</div>
 
-  <h1>Track habits by tapping an NFC tag</h1>
+  <h1>Track habits by tapping an <span class="grad">NFC tag</span></h1>
   <p class="lead">Stick an NFC tag on your water bottle, gym bag, or door, and tap your phone to update a counter. No need to open the app. Counter writes the action straight to the tag.</p>
   <p class="meta">Guide for the Counter app on Android. Requires a phone with NFC.</p>
 

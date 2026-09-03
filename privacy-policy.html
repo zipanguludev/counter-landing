@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#121212">
+    <meta name="theme-color" content="#0b1220">
     <meta name="author" content="CounterAutomate">
     <title>Privacy Policy | Counter App for Android</title>
     <meta name="description" content="Privacy Policy for the Counter app for Android: how your data is stored, how automatic backup works with your own Google account, notifications, advertising ID and third-party services.">
@@ -21,31 +21,34 @@
           var theme = saved || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark');
           document.documentElement.setAttribute('data-theme', theme);
           var m = document.querySelector('meta[name="theme-color"]');
-          if(m) m.setAttribute('content', theme === 'light' ? '#fafafa' : '#121212');
+          if(m) m.setAttribute('content', theme === 'light' ? '#f3f6fa' : '#0b1220');
         }catch(e){}
       })();
     </script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4285f4;
-            --primary-dark: #3367d6;
-            --bg: #121212;
-            --card-bg: #1e1e1e;
-            --text: #e0e0e0;
-            --text-secondary: #aaaaaa;
-            --border: #333333;
-            --accent: #8ab4f8;
+            --primary: #09acf4;
+            --primary-dark: #0284c7;
+            --bg: #0b1220;
+            --card-bg: #131c2c;
+            --text: #eceff1;
+            --text-secondary: #9fb3c8;
+            --border: #26364d;
+            --accent: #7fdcff;
             color-scheme: dark;
         }
 
         :root[data-theme="light"] {
-            --bg: #fafafa;
+            --bg: #f3f6fa;
             --card-bg: #ffffff;
-            --text: #212121;
-            --text-secondary: #616161;
-            --border: #e0e0e0;
-            --accent: #1a73e8;
+            --text: #0b1220;
+            --text-secondary: #46586e;
+            --border: #d5dfea;
+            --accent: #0369a1;
             color-scheme: light;
         }
 
@@ -72,7 +75,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: 'Barlow', 'Segoe UI', system-ui, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
@@ -247,7 +250,7 @@
   const root = document.documentElement;
   const btn = document.getElementById('theme-toggle');
   const meta = document.querySelector('meta[name="theme-color"]');
-  const COLOR = { dark:'#121212', light:'#fafafa' };
+  const COLOR = { dark:'#0b1220', light:'#f3f6fa' };
   const get = () => root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
   function apply(theme){
     root.setAttribute('data-theme', theme);

@@ -3,7 +3,7 @@
   var root = document.documentElement;
   var btn = document.getElementById('theme-toggle');
   var meta = document.querySelector('meta[name="theme-color"]');
-  var COLOR = { dark: '#0a0a0f', light: '#f6f6fb' };
+  var COLOR = { dark: '#0b1220', light: '#f3f6fa' };
   function get(){ return root.getAttribute('data-theme') === 'light' ? 'light' : 'dark'; }
   function apply(theme){
     root.setAttribute('data-theme', theme);
