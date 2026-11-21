@@ -55,14 +55,14 @@
         { "@type": "Question", "name": "What happens on first launch?", "acceptedAnswer": { "@type": "Answer", "text": "A short setup asks what you want to count and creates those counters for you, shows how automations work by creating an example rule, and lets you pick a card style. If you skip the choices, Counter fills the home with a few example counters, a calculated view and automations so you can see everything working. You can delete them at any time." } },
         { "@type": "Question", "name": "How do I increment or decrement a counter?", "acceptedAnswer": { "@type": "Answer", "text": "On the home screen, tap the + or - buttons on each counter card. Open the counter for the big + and - buttons, your quick actions (for example +5 or -20), notes, and the option to set a specific value. You can also count from a home screen widget, from tap zones, with NFC tags or with the volume buttons." } },
         { "@type": "Question", "name": "What are quick actions?", "acceptedAnswer": { "@type": "Answer", "text": "Quick actions are your own shortcut buttons, such as +3, +10 or -20. Set them in the counter editor by typing one or more numbers separated by a space; a negative number becomes a subtract button. They appear on the counter detail screen and on the cards of its goals." } },
-        { "@type": "Question", "name": "What are categories and how do I use them?", "acceptedAnswer": { "@type": "Answer", "text": "Categories let you organize counters into groups. Assign a counter to a category when creating or editing it. On the home screen each category is a collapsible section; collapsed categories show a strip with the colors of the counters inside. To show counters as a single flat list instead, change the grouping in Settings > Home appearance." } },
+        { "@type": "Question", "name": "What are categories and how do I use them?", "acceptedAnswer": { "@type": "Answer", "text": "Categories let you organize counters into groups. Assign a counter to a category when creating or editing it. On the home screen each category is a collapsible section; collapsed categories show a strip with the colors of the counters inside. To show counters as a single flat list instead, change the grouping in Settings > Appearance > Home appearance." } },
         { "@type": "Question", "name": "How do I change the color of a counter?", "acceptedAnswer": { "@type": "Answer", "text": "Open the counter editor (long press a counter or tap the edit icon) and choose a color from the palette. The color is used for the counter card, its number, its widgets and its charts. How strongly it shows on the card depends on the card style you pick in Settings." } },
         { "@type": "Question", "name": "How do I reset a counter?", "acceptedAnswer": { "@type": "Answer", "text": "Open the counter detail screen and tap the reset icon in the top bar. The counter returns to its configured reset value (default 0) and the reset is logged in the counter history." } },
         { "@type": "Question", "name": "What is the PIN / private mode?", "acceptedAnswer": { "@type": "Answer", "text": "Set a PIN in Settings > Security to protect private counters. When a counter is marked private you must enter the PIN (or use biometric unlock) to view it. The PIN is stored securely as a hash." } },
-        { "@type": "Question", "name": "Can I use fingerprint to unlock private counters?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. In Settings > Security enable Biometric unlock. You must set a PIN first; afterwards you can use your fingerprint instead of the PIN." } },
+        { "@type": "Question", "name": "Can I use fingerprint to unlock private counters?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. In Settings > Security enable Unlock with fingerprint. You must set a PIN first; afterwards you can use your fingerprint instead of the PIN." } },
         { "@type": "Question", "name": "How do I change the layout of the home screen?", "acceptedAnswer": { "@type": "Answer", "text": "Go to Settings > Appearance > Home appearance. A live preview at the top shows the effect of the three choices below it: grouping (by category or a flat list), arrangement (grid or list) and the card layout. Layouts that keep the buttons on the side need a wide card, so they are available only with the list arrangement." } },
         { "@type": "Question", "name": "What are the Tonal, Soft and Vivid card styles?", "acceptedAnswer": { "@type": "Answer", "text": "They decide how much of a counter's color shows on its card. Tonal keeps the card neutral, with the color on an accent bar and the number. Soft washes the whole card with a light tint of the color. Vivid paints the card in full color. Pick one in Settings > Appearance > Counter card colors, where each option comes with a preview and a full-size sample card. The style is also offered once at first launch. Tonal is the default." } },
-        { "@type": "Question", "name": "Can I change the app theme?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. In Settings > Appearance > Theme choose Day, Night or System default, and optionally enable Dynamic color (Material You) on Android 12+ to use the colors of your wallpaper. Widgets follow the system theme." } },
+        { "@type": "Question", "name": "Can I change the app theme?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. In Settings > Appearance > Theme choose Day, Night or System, and optionally enable Dynamic color (Material You) on Android 12+ to use the colors of your wallpaper. Widgets follow the system theme." } },
         { "@type": "Question", "name": "What are View Counters (formulas)?", "acceptedAnswer": { "@type": "Answer", "text": "View Counters are computed counters whose value comes from a math formula referencing other counters using the c{id} syntax (for example c1 + c2). They update automatically when referenced counters change, have no buttons, and their detail screen shows how the value is calculated. They support the + - * / % operators." } },
         { "@type": "Question", "name": "How do I set custom increment/decrement steps?", "acceptedAnswer": { "@type": "Answer", "text": "When creating or editing a counter, set the Increment value and Decrement value fields. Each tap of + or - changes the counter by these amounts." } },
         { "@type": "Question", "name": "Can I set minimum or maximum limits on a counter?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. In the counter editor set a minimum and/or maximum value. The counter will not go below the minimum or above the maximum, and out-of-range values are adapted automatically." } },
@@ -72,24 +72,24 @@
         { "@type": "Question", "name": "How does the counter history/log work?", "acceptedAnswer": { "@type": "Answer", "text": "Every change is logged with the timestamp, new value, delta and whether it was a manual action, a reset or an automatic change, and you can attach a note to any change. The counter's History tab lists the log and lets you search through notes; the Overview tab turns it into a trend chart, an activity heatmap and the hours you count the most." } },
         { "@type": "Question", "name": "What do the statistics show?", "acceptedAnswer": { "@type": "Answer", "text": "Each counter has an Overview with a sentence that sums it up, a trend chart you can zoom by day, week or month, a six-month activity heatmap, your busiest hours and the current and record streak. The Statistics screen, reached from the home screen, does the same for all counters together: overall streak, changes in the last 30 days, most used counters and totals by category." } },
         { "@type": "Question", "name": "What are Events & Actions?", "acceptedAnswer": { "@type": "Answer", "text": "Events & Actions are the automations of Counter: rules that say when something happens on a counter, do this. Each counter's detail screen shows its rules and lets you add one on a single page: choose whether it fires on a value change or at a time, pick the event, pick the action, fill in the parameters and save. You can pause all automations from Settings > Behaviour > Automations." } },
-        { "@type": "Question", "name": "What events are available?", "acceptedAnswer": { "@type": "Answer", "text": "There are 12 event types: Counter Updated, Reached Value, Reached Greater Value, Reached Less Value, Multiple of Value, Between Values, Even Value, Odd Value, Prime Value, Palindrome Value, Reached Max Value and Reached Min Value." } },
-        { "@type": "Question", "name": "Can I trigger actions on a schedule (time-based events)?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Besides counter events, Counter has temporal (time-based) events that fire on a schedule, independently of counter changes: At specific date and time, Every day at time, Weekly on selected days, Monthly on specific day, and Every N minutes. Each targets a counter and can run any action, so you can reset a counter every day at 8:00, send a webhook on a schedule, or post a Telegram summary every Monday. On Android 13+ time events need the exact alarm permission." } },
-        { "@type": "Question", "name": "What actions can I configure?", "acceptedAnswer": { "@type": "Answer", "text": "There are 13 action types, grouped by what they do. On the counter itself: Increment counter, Decrement counter, Reset counter, Double counter value, Set counter color, Set counter title. On other counters: Increment another counter, Decrement another counter. Alerts: Send notification, Send popup message. To the outside: Broadcast intent for Tasker, Automate and MacroDroid, Telegram message, Webhook." } },
-        { "@type": "Question", "name": "How do I set up a Webhook?", "acceptedAnswer": { "@type": "Answer", "text": "Create a rule, select Webhook, and configure the URL, HTTP method (GET, POST, PUT, PATCH or DELETE), optional headers, an optional body with template variables, authentication (Bearer token, Basic auth or API key), retries and timeout." } },
+        { "@type": "Question", "name": "What events are available?", "acceptedAnswer": { "@type": "Answer", "text": "There are 12 event types: Changes, Reaches the value, Goes above, Drops below, Is a multiple of, Is within, Is even, Is odd, Is a prime number, Is a palindrome, Reaches its maximum and Reaches its minimum." } },
+        { "@type": "Question", "name": "Can I trigger actions on a schedule (time-based events)?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Besides counter events, Counter has temporal (time-based) events that fire on a schedule, independently of counter changes: On a date and time, Every day at, Every week on, Every month on, and Every N minutes. Each targets a counter and can run any action, so you can reset a counter every day at 8:00, send a webhook on a schedule, or post a Telegram summary every Monday. On Android 13+ time events need the exact alarm permission." } },
+        { "@type": "Question", "name": "What actions can I configure?", "acceptedAnswer": { "@type": "Answer", "text": "There are 13 action types, grouped by what they do. On the counter: Increment counter, Decrement counter, Reset counter, Double counter value, Change counter color, Change counter title, Increment another counter, Decrement another counter. Alerts: Send notification, Send popup message. To the outside: Broadcast intent for Tasker, Automate and MacroDroid, Telegram message, Webhook." } },
+        { "@type": "Question", "name": "How do I set up a Webhook?", "acceptedAnswer": { "@type": "Answer", "text": "Create a rule, select Webhook, and configure the URL, HTTP method (GET, POST, PUT, PATCH or DELETE), Content-Type, optional additional headers, an optional payload template with template variables, authentication (Bearer token, Basic auth or API key), retries and timeout." } },
         { "@type": "Question", "name": "How do I set up Telegram notifications?", "acceptedAnswer": { "@type": "Answer", "text": "Create a Telegram bot via @BotFather and copy the bot token, find your chat ID (for example with @userinfobot), then create a rule with the Telegram Message action and enter the bot token, chat ID and message text with optional template variables." } },
         { "@type": "Question", "name": "How does Tasker/Automate/MacroDroid integration work?", "acceptedAnswer": { "@type": "Answer", "text": "The Broadcast Intent action sends an Android broadcast intent that Tasker, Automate, MacroDroid or other automation apps can receive. The intent includes counter data (ID, value, title) plus custom extras, letting you trigger complex phone automations from counter events." } },
         { "@type": "Question", "name": "Can I chain multiple actions on a single event?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can create multiple rules for the same counter and event; when the event fires, all matching actions execute." } },
-        { "@type": "Question", "name": "Can an automatic action trigger another event (event chaining)?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. When an action modifies a counter (Increment or Decrement Another Counter, Double Counter Value, Reset Counter), the resulting change can trigger events on that target counter. Propagation is configurable per rule, and built-in cycle protection stops infinite loops automatically." } },
+        { "@type": "Question", "name": "Can an automatic action trigger another event (event chaining)?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. When an action modifies a counter (Increment or Decrement another counter, Double counter value, Reset counter), the resulting change can trigger events on that target counter. Propagation is configurable per rule, and built-in cycle protection stops infinite loops automatically." } },
         { "@type": "Question", "name": "How do NFC tags work with Counter?", "acceptedAnswer": { "@type": "Answer", "text": "You can write NFC tags that increment, decrement or reset a specific counter. Open a counter detail screen, choose the NFC write option and the action, optionally set a step value, then hold a tag near the phone to write it. Tap the tag afterwards to trigger the action, even from the lock screen." } },
         { "@type": "Question", "name": "What are tap zones?", "acceptedAnswer": { "@type": "Answer", "text": "Tap zones turn the whole screen into one giant button per counter, so you can count without looking at the phone: ideal for scores and reps. Open them from the home screen's top bar, pick the counters, and tap anywhere in a zone to increment it. Each zone is drawn in the counter's color with the same card style as the home." } },
         { "@type": "Question", "name": "What widgets are available?", "acceptedAnswer": { "@type": "Answer", "text": "Counter offers two home screen widgets. The standard widget shows the counter name, value and +, - and reset buttons; resize it and the layout adapts, from a full card with buttons down to a small tile with just the value. The compact 1x1 widget shows the title and value and counts when you tap it. Widgets use the counter's color and follow the system day/night theme." } },
-        { "@type": "Question", "name": "What is the External Intent Receiver?", "acceptedAnswer": { "@type": "Answer", "text": "It lets other apps control your counters via Android broadcast intents. Enable it in Settings > External Integration, optionally set an auth token, and send the com.zipangulu.counter.ACTION_EXTERNAL_COMMAND intent with the commands increment, decrement, reset or set_value. A separate read-only switch lets widgets and other apps read counter values." } },
+        { "@type": "Question", "name": "What is the External Intent Receiver?", "acceptedAnswer": { "@type": "Answer", "text": "It lets other apps control your counters via Android broadcast intents. Turn on the External commands switch in Settings > External integration, copy the security token (required by default), and send the com.zipangulu.counter.ACTION_EXTERNAL_COMMAND intent with the commands increment, decrement, reset or set_value. A separate read-only switch lets widgets and other apps read counter values." } },
         { "@type": "Question", "name": "What types of goals can I set?", "acceptedAnswer": { "@type": "Answer", "text": "There are four goal types: Reach value, Reach by date, Stay within range (keep the value between a minimum and maximum) and Reduce value. Each goal can have a priority (Low, Medium, High) and can auto-complete when the target is reached. The goal card shows progress, how much is left, whether you are on track for the deadline, and your quick actions." } },
         { "@type": "Question", "name": "Do I get notified when I reach a goal?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The app monitors your goals in the background and sends a notification, once, when a goal is reached or a deadline is approaching. Goals are on the Goals tab, split into active, completed and archived." } },
         { "@type": "Question", "name": "What are Challenges?", "acceptedAnswer": { "@type": "Answer", "text": "Challenges are live races between counters. Create a challenge, add two or more counters and optionally set a timer; counters can be reset to zero at the start, and the play screen shows the ranking moving in real time as you count." } },
         { "@type": "Question", "name": "What does the Premium version include?", "acceptedAnswer": { "@type": "Answer", "text": "The Premium version removes all ads from the app. All features are available in the free version; Premium is a way to support development while enjoying an ad-free experience." } },
         { "@type": "Question", "name": "Is my data safe? Does Counter collect personal information?", "acceptedAnswer": { "@type": "Answer", "text": "Counter does not send your counter data to our servers and never uses it for advertising. If Android Backup is enabled, an encrypted copy of your non-private data is stored in your own Google account and we have no access to it; private PIN-protected counters stay only on your device. Firebase Crashlytics and Analytics are used to improve stability and understand general usage patterns, but no personal counter data is shared." } },
-        { "@type": "Question", "name": "How do I contact support?", "acceptedAnswer": { "@type": "Answer", "text": "Go to Settings > Support > Contact support. This opens your email app with diagnostic information pre-filled to help us assist you faster." } },
+        { "@type": "Question", "name": "How do I contact support?", "acceptedAnswer": { "@type": "Answer", "text": "Go to Settings > Support > Contact us. This opens your email app with diagnostic information pre-filled to help us assist you faster." } },
         { "@type": "Question", "name": "Can I delete all my data?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Go to Settings > Backup > Delete all data to permanently delete all counters, categories, goals, challenges, automations and logs. This action cannot be undone, so consider exporting a backup first." } },
         { "@type": "Question", "name": "The app is in the wrong language. How do I change it?", "acceptedAnswer": { "@type": "Answer", "text": "Counter follows your device system language. Change it in Settings > Apps > Counter > Language (Android 13+) or via your device language settings. Supported languages: English, German, Spanish, French, Italian, Portuguese, Russian, Chinese." } }
       ]
@@ -214,7 +214,7 @@
     <details>
         <summary>Can I use fingerprint to unlock private counters?</summary>
         <div class="answer">
-            <p>Yes. Go to <strong>Settings &gt; Security</strong> and enable <strong>Biometric unlock</strong>. You must first set a PIN before enabling biometric authentication. Once enabled, you can use your fingerprint instead of the PIN.</p>
+            <p>Yes. Go to <strong>Settings &gt; Security</strong> and enable <strong>Unlock with fingerprint</strong>. You must first set a PIN before enabling biometric authentication. Once enabled, you can use your fingerprint instead of the PIN.</p>
         </div>
     </details>
 </section>
@@ -252,7 +252,7 @@
     <details>
         <summary>Can I change the app theme?</summary>
         <div class="answer">
-            <p>Yes. In <strong>Settings &gt; Appearance &gt; Theme</strong> choose <strong>Day</strong>, <strong>Night</strong> or <strong>System default</strong>. You can also enable <strong>Dynamic color (Material You)</strong> on Android 12+ to use the colors of your wallpaper. Widgets follow the system theme.</p>
+            <p>Yes. In <strong>Settings &gt; Appearance &gt; Theme</strong> choose <strong>Day</strong>, <strong>Night</strong> or <strong>System</strong>. You can also enable <strong>Dynamic color (Material You)</strong> on Android 12+ to use the colors of your wallpaper. Widgets follow the system theme.</p>
         </div>
     </details>
 </section>
@@ -351,18 +351,18 @@
         <div class="answer">
             <p>There are 12 event types you can use as triggers:</p>
             <ul>
-                <li><strong>Counter Updated</strong>: Fires every time the counter changes.</li>
-                <li><strong>Reached Value</strong>: Counter reaches exactly a specific value.</li>
-                <li><strong>Reached Greater Value</strong>: Counter reaches or exceeds a value.</li>
-                <li><strong>Reached Less Value</strong>: Counter drops below a value.</li>
-                <li><strong>Multiple of Value</strong>: Counter value is a multiple of N (e.g., every 10).</li>
-                <li><strong>Between Values</strong>: Counter value is between two numbers.</li>
-                <li><strong>Even Value</strong>: Counter value is even.</li>
-                <li><strong>Odd Value</strong>: Counter value is odd.</li>
-                <li><strong>Prime Value</strong>: Counter value is a prime number.</li>
-                <li><strong>Palindrome Value</strong>: Counter value is a palindrome (e.g., 121, 1331).</li>
-                <li><strong>Reached Max Value</strong>: Counter hits its configured maximum.</li>
-                <li><strong>Reached Min Value</strong>: Counter hits its configured minimum.</li>
+                <li><strong>Changes</strong>: Fires every time the counter changes.</li>
+                <li><strong>Reaches the value</strong>: Counter reaches exactly a specific value.</li>
+                <li><strong>Goes above</strong>: Counter value goes above a value (strictly greater, not equal).</li>
+                <li><strong>Drops below</strong>: Counter drops below a value.</li>
+                <li><strong>Is a multiple of</strong>: Counter value is a multiple of N (e.g., every 10).</li>
+                <li><strong>Is within</strong>: Counter value is between two numbers.</li>
+                <li><strong>Is even</strong>: Counter value is even.</li>
+                <li><strong>Is odd</strong>: Counter value is odd.</li>
+                <li><strong>Is a prime number</strong>: Counter value is a prime number.</li>
+                <li><strong>Is a palindrome</strong>: Counter value is a palindrome (e.g., 121, 1331).</li>
+                <li><strong>Reaches its maximum</strong>: Counter hits its configured maximum.</li>
+                <li><strong>Reaches its minimum</strong>: Counter hits its configured minimum.</li>
             </ul>
         </div>
     </details>
@@ -372,10 +372,10 @@
         <div class="answer">
             <p>Yes. Besides counter events, Counter has <strong>temporal (time-based) events</strong> that fire on a schedule, independently of counter changes. When creating a rule, choose <strong>At a time</strong> and pick one of:</p>
             <ul>
-                <li><strong>At specific date and time</strong>: Fires once at a date and time you choose.</li>
-                <li><strong>Every day at time</strong>: Fires daily at the configured hour and minute.</li>
-                <li><strong>Weekly on selected days</strong>: Fires on the days of the week you pick.</li>
-                <li><strong>Monthly on specific day</strong>: Fires once a month on the chosen day.</li>
+                <li><strong>On a date and time</strong>: Fires once at a date and time you choose.</li>
+                <li><strong>Every day at</strong>: Fires daily at the configured hour and minute.</li>
+                <li><strong>Every week on</strong>: Fires on the days of the week you pick.</li>
+                <li><strong>Every month on</strong>: Fires once a month on the chosen day.</li>
                 <li><strong>Every N minutes</strong>: Fires at a regular interval.</li>
             </ul>
             <p>Each temporal event targets a counter and can run any action: reset or change a counter, send a webhook, post to Telegram, fire a broadcast intent, and more. For example, reset a water counter <strong>every day at 8:00</strong>, or send a Telegram summary <strong>every Monday</strong>.</p>
@@ -387,15 +387,12 @@
         <summary>What actions can I configure?</summary>
         <div class="answer">
             <p>There are 13 action types, grouped by what they do:</p>
-            <p><strong>On this counter</strong></p>
+            <p><strong>On the counter</strong></p>
             <ul>
                 <li><strong>Increment counter</strong> / <strong>Decrement counter</strong>: Change the counter by its configured step.</li>
                 <li><strong>Reset counter</strong>: Reset the counter to its reset value.</li>
                 <li><strong>Double counter value</strong>: Double the current value.</li>
-                <li><strong>Set counter color</strong> / <strong>Set counter title</strong>: Change the counter's look or name.</li>
-            </ul>
-            <p><strong>On other counters</strong></p>
-            <ul>
+                <li><strong>Change counter color</strong> / <strong>Change counter title</strong>: Change the counter's look or name.</li>
                 <li><strong>Increment another counter</strong> / <strong>Decrement another counter</strong>: Change a different counter, chaining them together.</li>
             </ul>
             <p><strong>Alerts</strong></p>
@@ -418,19 +415,21 @@
             <p>Create a rule, select <strong>Webhook</strong> as the action, and configure:</p>
             <ol>
                 <li><strong>URL</strong>: The endpoint to call.</li>
-                <li><strong>HTTP Method</strong>: GET, POST, PUT, PATCH, or DELETE.</li>
-                <li><strong>Headers</strong>: Optional custom headers (e.g., Content-Type).</li>
-                <li><strong>Body</strong>: Optional request body (for POST/PUT/PATCH). Supports template variables.</li>
-                <li><strong>Authentication</strong>: Optional: Bearer token, Basic auth, or API Key.</li>
-                <li><strong>Retries</strong>: Number of retry attempts on failure.</li>
-                <li><strong>Timeout</strong>: Request timeout in seconds.</li>
+                <li><strong>HTTP method</strong>: GET, POST, PUT, PATCH, or DELETE.</li>
+                <li><strong>Content-Type</strong>: The content type of the request (application/json by default).</li>
+                <li><strong>Additional Headers</strong>: Optional custom headers.</li>
+                <li><strong>Payload template</strong>: Optional request body (for POST/PUT/PATCH). Supports template variables.</li>
+                <li><strong>Authentication type</strong>: Optional: Bearer token, Basic auth, or API Key.</li>
+                <li><strong>Max retry</strong>: Number of retry attempts on failure.</li>
+                <li><strong>Timeout</strong>: Connect and read timeouts, in milliseconds.</li>
             </ol>
             <p><strong>Example:</strong> To send a POST request when a counter reaches 100:</p>
-            <pre><code>Event: Reached Value = 100
+            <pre><code>Event: Reaches the value = 100
 Action: Webhook
   URL: https://your-api.com/notify
   Method: POST
-  Body: {"counter": "{{title}}", "value": {{value}}}</code></pre>
+  Body: {"counter": "${counter.title}", "value": ${counter.value}}</code></pre>
+            <p>Template variables: <code>${counter.id}</code>, <code>${counter.title}</code>, <code>${counter.value}</code>, <code>${counter.unit}</code>, <code>${counter.step}</code>, <code>${counter.min}</code>, <code>${counter.max}</code> and <code>${timestamp}</code>.</p>
             <p class="guide-hint"><strong>Full walkthrough:</strong> see the <a href="home-assistant-counter.html">Home Assistant webhook guide</a>.</p>
         </div>
     </details>
@@ -470,7 +469,7 @@ Action: Webhook
     <details>
         <summary>Can an automatic action trigger another event (event chaining)?</summary>
         <div class="answer">
-            <p>Yes. When an action modifies a counter (for example <strong>Increment Another Counter</strong>, <strong>Decrement Another Counter</strong>, <strong>Double Counter Value</strong>, or <strong>Reset Counter</strong>), the resulting change can in turn trigger events configured on that target counter, which can execute their own actions, and so on.</p>
+            <p>Yes. When an action modifies a counter (for example <strong>Increment another counter</strong>, <strong>Decrement another counter</strong>, <strong>Double counter value</strong>, or <strong>Reset counter</strong>), the resulting change can in turn trigger events configured on that target counter, which can execute their own actions, and so on.</p>
             <p>Event propagation is configurable <strong>per rule</strong>: when you create or edit a rule, you can choose whether its action is allowed to propagate further events. By default, this lets you build chains of automations: for example, incrementing counter A triggers an action that resets counter B, which in turn triggers a Telegram notification.</p>
             <p>To prevent infinite loops (e.g., counter A increments B, B increments A), the app includes <strong>cycle protection</strong> that detects repeating event-action chains and stops propagation automatically.</p>
         </div>
@@ -525,8 +524,8 @@ Action: Webhook
             <p>The External Intent Receiver allows other apps to control your counters via Android broadcast intents. This is useful for advanced automation with Tasker, Automate, MacroDroid, or custom scripts.</p>
             <p><strong>Setup:</strong></p>
             <ol>
-                <li>Enable it in <strong>Settings &gt; External Integration</strong>.</li>
-                <li>Optionally configure an authentication token for security.</li>
+                <li>In <strong>Settings &gt; External integration</strong>, turn on <strong>External commands</strong>.</li>
+                <li>Open <strong>Security token</strong> and copy the token: it is required by default and must travel with every command as <code>auth_token</code>. You can turn the requirement off in the same dialog.</li>
             </ol>
             <p><strong>Supported commands:</strong></p>
             <ul>
@@ -540,9 +539,9 @@ Action: Webhook
 Extras:
   counter_id (long) - required
   command (string)  - required
-  value (int)       - optional
+  value (long)      - optional
   auth_token (string) - if authentication is enabled</code></pre>
-            <p><strong>Tasker example:</strong> Send Intent action <code>com.zipangulu.counter.ACTION_EXTERNAL_COMMAND</code> with extras <code>counter_id: 1</code> and <code>command: increment</code>.</p>
+            <p><strong>Tasker example:</strong> Send Intent action <code>com.zipangulu.counter.ACTION_EXTERNAL_COMMAND</code> with extras <code>counter_id:1L</code> and <code>command:increment</code>. The <code>L</code> matters: <code>counter_id</code> and <code>value</code> must be sent as long numbers, and Tasker sends a plain <code>1</code> as an int.</p>
             <p>A separate <strong>read-only</strong> switch in the same section lets widgets and other apps read counter values.</p>
             <p class="guide-hint"><strong>Full walkthrough:</strong> see the <a href="tasker-counter.html">Tasker and Automate guide</a>.</p>
         </div>
@@ -607,7 +606,7 @@ Extras:
     <details>
         <summary>How do I contact support?</summary>
         <div class="answer">
-            <p>Go to <strong>Settings &gt; Support &gt; Contact support</strong>. This will open your email app with diagnostic information pre-filled to help us assist you faster.</p>
+            <p>Go to <strong>Settings &gt; Support &gt; Contact us</strong>. This will open your email app with diagnostic information pre-filled to help us assist you faster.</p>
         </div>
     </details>
 
@@ -631,7 +630,7 @@ Extras:
 
 <footer class="site-footer">
     <p>© 2026 Counter. <a href="index.html">Home</a> | <a href="privacy-policy.html">Privacy Policy</a> | <a href="https://play.google.com/store/apps/details?id=com.zipangulu.counter" target="_blank" rel="noopener">Google Play</a> | <a href="mailto:counterapphelp@gmail.com">Contact us</a></p>
-    <p>Guides: <a href="home-assistant-counter.html">Home Assistant</a> | <a href="tasker-counter.html">Tasker</a> | <a href="nfc-counter.html">NFC</a> | <a href="telegram-counter.html">Telegram</a></p>
+    <p>Guides: <a href="home-assistant-counter.html">Home Assistant</a> | <a href="tasker-counter.html">Tasker</a> | <a href="nfc-counter.html">NFC</a> | <a href="telegram-counter.html">Telegram</a> | <a href="google-sheets-counter.html">Google Sheets</a> | <a href="people-counter.html">People counter</a></p>
 </footer>
 
 <script src="guide.js"></script>

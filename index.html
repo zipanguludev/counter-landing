@@ -20,9 +20,9 @@
   })();
 </script>
 
-<title>Counter App: Track Habits, Goals & Finances with Smart Automations | Android</title>
-<meta name="description" content="Free Android counter app (tally counter) with webhooks, NFC tags, Tasker integration, Home Assistant support, automated actions, calculated views, goal tracking, streaks and statistics. Count anything, automate everything.">
-<meta name="keywords" content="counter app, tally counter, habit tracker, goal tracker android, counter with automations, webhook counter, NFC counter, tasker counter, home assistant counter, calculated counter, android widget counter, free counter app, smart home counter, streak tracker">
+<title>Counter App for Android: Tally Counter with Automations & Widgets</title>
+<meta name="description" content="Free tally counter and click counter app for Android. Count anything with one tap, a widget or an NFC tag, then automate it: webhooks, Tasker, Home Assistant, Telegram, goals, streaks and statistics.">
+<meta name="keywords" content="counter app, tally counter, click counter, clicker, habit tracker, goal tracker android, counter with automations, webhook counter, NFC counter, tasker counter, home assistant counter, calculated counter, android widget counter, free counter app, smart home counter, streak tracker">
 
 <!-- Canonical URL -->
 <link rel="canonical" href="https://counterautomate.com/">
@@ -62,14 +62,7 @@
   "downloadUrl": "https://play.google.com/store/apps/details?id=com.zipangulu.counter",
   "screenshot": "https://counterautomate.com/img/home.webp",
   "featureList": "Automated Events & Actions, Scheduled Automations, Calculated Counter Views, Goal Tracking, Streaks & Statistics, Home Screen Widgets, Tap Zones, NFC Tags, Webhooks, Telegram, Tasker Intents, Three Card Styles, Dark Mode, Material You, Categories, PIN & Biometric Lock, Automatic Backup",
-  "publisher": { "@id": "https://counterautomate.com/#organization" },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "ratingCount": "23",
-    "bestRating": "5",
-    "worstRating": "1"
-  }
+  "publisher": { "@id": "https://counterautomate.com/#organization" }
 }
 </script>
 
@@ -302,7 +295,10 @@ nav.site-nav .container { display: flex; align-items: center; justify-content: s
 .hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding: 120px 0 60px; overflow: hidden; }
 .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
 
-.hero h1 {
+/* the h1 holds the keyword line (kicker) and the slogan: only the slogan is display type */
+.hero h1 { font-size: inherit; font-weight: inherit; line-height: inherit; }
+.hero h1 .hero-slogan {
+  display: block;
   font-size: clamp(56px, 7.4vw, 104px);
   margin: 18px 0 22px;
   animation: fadeUp 0.8s ease-out 0.1s both;
@@ -385,7 +381,7 @@ nav.site-nav .container { display: flex; align-items: center; justify-content: s
 .ticker-item::after { content: '·'; color: var(--cyan); margin-left: 40px; }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) {
-  .ticker-track, .float, .stat-tile, .hero h1, .hero .lead, .hero-actions, .hero-proof, .hero-visual { animation: none !important; }
+  .ticker-track, .float, .stat-tile, .hero h1 .hero-slogan, .hero .lead, .hero-actions, .hero-proof, .hero-visual { animation: none !important; }
 }
 
 /* ===== SECTION HEADERS ===== */
@@ -499,6 +495,8 @@ section { position: relative; overflow-x: clip; }
 .highlight-icon { font-size: 24px; margin-bottom: 14px; line-height: 1; }
 .highlight-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
 .highlight-card p { font-size: 14px; color: var(--text-2); line-height: 1.6; }
+.highlight-card a { color: var(--cyan-soft); font-weight: 700; text-decoration: none; white-space: nowrap; }
+.highlight-card a:hover { text-decoration: underline; }
 
 /* ===== CTA ===== */
 .cta { padding: 60px 0 120px; }
@@ -592,7 +590,7 @@ footer a:hover { color: var(--cyan-soft); }
 }
 
 @media (max-width: 600px) {
-  .hero h1 { font-size: clamp(56px, 17vw, 84px); }
+  .hero h1 .hero-slogan { font-size: clamp(56px, 17vw, 84px); }
   .highlights-grid { grid-template-columns: 1fr; }
   .stat-tile { padding: 10px 14px; min-width: 120px; }
   .stat-tile b { font-size: 26px; }
@@ -644,6 +642,8 @@ footer a:hover { color: var(--cyan-soft); }
           <li><a href="tasker-counter.html">Tasker &amp; Automate</a></li>
           <li><a href="nfc-counter.html">NFC tags</a></li>
           <li><a href="telegram-counter.html">Telegram</a></li>
+          <li><a href="google-sheets-counter.html">Google Sheets</a></li>
+          <li><a href="people-counter.html">People counter</a></li>
         </ul>
       </li>
       <li><a href="faq.html">FAQ</a></li>
@@ -673,10 +673,12 @@ footer a:hover { color: var(--cyan-soft); }
   <div class="container">
     <div class="hero-grid">
       <div class="hero-content">
-        <span class="kicker">Free counter app for Android</span>
-        <h1 class="display">Count<br><span class="grad">anything.</span><br>Automate<br>everything.</h1>
+        <h1>
+          <span class="kicker">Free tally counter app for Android</span>
+          <span class="hero-slogan display">Count<br><span class="grad">anything.</span><br>Automate<br>everything.</span>
+        </h1>
         <p class="lead">
-          Water, workouts, money, scores: <strong>one home for every number</strong>. A tally counter, habit tracker and goal tracker that fires webhooks, talks to Home Assistant and Tasker, reads NFC tags and does the math for you.
+          Water, workouts, money, scores: <strong>one home for every number</strong>. A tally counter, click counter and habit tracker that fires webhooks, talks to Home Assistant and Tasker, reads NFC tags and does the math for you.
         </p>
         <div class="hero-actions">
           <a href="https://play.google.com/store/apps/details?id=com.zipangulu.counter" class="btn-primary" target="_blank" rel="noopener">
@@ -689,8 +691,7 @@ footer a:hover { color: var(--cyan-soft); }
           </a>
         </div>
         <div class="hero-proof" aria-label="Google Play stats">
-          <div class="proof"><b>5.0 <span class="star">★</span></b><span>on Google Play</span></div>
-          <div class="proof"><b>10K+</b><span>downloads</span></div>
+          <div class="proof"><b>15K+</b><span>downloads</span></div>
           <div class="proof"><b>Free</b><span>no account needed</span></div>
         </div>
       </div>
@@ -897,7 +898,8 @@ footer a:hover { color: var(--cyan-soft); }
         <h3>Webhooks</h3>
         <p>Fire HTTP requests (GET, POST, PUT, PATCH, DELETE) with custom headers, authentication, JSON payloads and template variables. Connect to Home Assistant, Google Sheets, Zapier, Make, or any REST API.</p>
         <div class="chips"><span class="chip">Home Assistant</span><span class="chip">Google Sheets</span><span class="chip">Zapier</span><span class="chip">Any REST API</span></div>
-        <a class="integration-link" href="home-assistant-counter.html">Read the Home Assistant guide →</a>
+        <a class="integration-link" href="home-assistant-counter.html">Read the Home Assistant guide →</a><br>
+        <a class="integration-link" href="google-sheets-counter.html">Read the Google Sheets guide →</a>
       </div>
       <div class="integration-card reveal">
         <div class="integration-icon">
@@ -970,6 +972,10 @@ footer a:hover { color: var(--cyan-soft); }
       <div class="highlight-card reveal"><div class="highlight-icon">✅</div><h3>Habit tracker</h3><p>Use Counter as a habit counter and habit tracker with goals, deadlines and progress charts.</p></div>
       <div class="highlight-card reveal"><div class="highlight-icon">📦</div><h3>Count inventory &amp; stock</h3><p>Track inventory or stock levels and fire a webhook automatically when you hit a threshold.</p></div>
       <div class="highlight-card reveal"><div class="highlight-icon">🏓</div><h3>Keep the score</h3><p>Tap zones for table tennis, darts, board games. Two giant buttons, no looking at the phone.</p></div>
+      <div class="highlight-card reveal"><div class="highlight-icon">📿</div><h3>Tasbih &amp; dhikr counter</h3><p>A digital tasbih that vibrates on every count and starts over at 33 or 100 on its own.</p></div>
+      <div class="highlight-card reveal"><div class="highlight-icon">🧶</div><h3>Knitting row counter</h3><p>Count rows and pattern repeats for knitting and crochet, with a note on the rows that matter.</p></div>
+      <div class="highlight-card reveal"><div class="highlight-icon">🚪</div><h3>People counter</h3><p>A door clicker for events and shops: in, out, how many are inside, and an alert at capacity. <a href="people-counter.html">Set it up</a>.</p></div>
+      <div class="highlight-card reveal"><div class="highlight-icon">📊</div><h3>Log to Google Sheets</h3><p>Send every count to a spreadsheet row with a webhook, no third-party service in between. <a href="google-sheets-counter.html">Set it up</a>.</p></div>
     </div>
   </div>
 </section>
@@ -996,7 +1002,7 @@ footer a:hover { color: var(--cyan-soft); }
   <div class="container">
     <p>© 2026 Counter. Built for people who count.
       <br><a href="faq.html">FAQ</a> | <a href="privacy-policy.html">Privacy Policy</a> | <a href="https://play.google.com/store/apps/details?id=com.zipangulu.counter" target="_blank" rel="noopener">Download on Google Play</a>
-      <br>Guides: <a href="home-assistant-counter.html">Home Assistant</a> | <a href="tasker-counter.html">Tasker</a> | <a href="nfc-counter.html">NFC</a> | <a href="telegram-counter.html">Telegram</a>
+      <br>Guides: <a href="home-assistant-counter.html">Home Assistant</a> | <a href="tasker-counter.html">Tasker</a> | <a href="nfc-counter.html">NFC</a> | <a href="telegram-counter.html">Telegram</a> | <a href="google-sheets-counter.html">Google Sheets</a> | <a href="people-counter.html">People counter</a>
     </p>
   </div>
 </footer>

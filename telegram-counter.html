@@ -49,7 +49,7 @@
       "description": "How to send automatic Telegram messages from the Counter app for Android using a bot, a chat ID, and template variables.",
       "image": "https://counterautomate.com/img/og-image.webp",
       "datePublished": "2026-06-19",
-      "dateModified": "2026-06-19",
+      "dateModified": "2026-11-20",
       "author": { "@type": "Organization", "name": "CounterAutomate", "url": "https://counterautomate.com/" },
       "publisher": { "@type": "Organization", "name": "CounterAutomate", "logo": { "@type": "ImageObject", "url": "https://counterautomate.com/img/logo.webp" } },
       "mainEntityOfPage": "https://counterautomate.com/telegram-counter.html"
@@ -126,15 +126,15 @@
 
   <h2>Step 3: Add a Telegram action in Counter</h2>
   <ol class="steps">
-    <li>Open the counter, go to <strong>Events &amp; Actions</strong>, and add a rule.</li>
-    <li>Pick the event that should send the message: a counter event (Reached Value, Counter Updated) or a time-based event (every day, weekly, every N minutes).</li>
+    <li>Open the counter, go to <strong>What it does on its own</strong>, and add a rule.</li>
+    <li>Pick the event that should send the message: a counter event (Reaches the value, Changes) or a time-based event (every day, weekly, every N minutes).</li>
     <li>Choose the <strong>Telegram Message</strong> action.</li>
     <li>Paste your <strong>bot token</strong> and <strong>chat ID</strong>.</li>
     <li>Write the message text, using template variables for dynamic content.</li>
   </ol>
   <p>Example message:</p>
-  <pre><code>{{title}} reached {{value}}.</code></pre>
-  <p>Counter replaces <code>{{title}}</code> and <code>{{value}}</code> with live data when it sends. A timestamp variable is available too.</p>
+  <pre><code>${counter.title} reached ${counter.value}.</code></pre>
+  <p>Counter replaces <code>${counter.title}</code> and <code>${counter.value}</code> with live data when it sends. Also available: <code>${counter.id}</code>, <code>${counter.unit}</code>, <code>${counter.step}</code>, <code>${counter.min}</code>, <code>${counter.max}</code> and <code>${timestamp}</code> (milliseconds).</p>
 
   <h2>Step 4: Test it</h2>
   <p>Change the counter until the event fires. The message should arrive in your Telegram chat within a second or two. If nothing arrives, double-check the bot token and chat ID, and make sure you have sent at least one message to the bot first.</p>

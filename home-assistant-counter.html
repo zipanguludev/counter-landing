@@ -49,7 +49,7 @@
       "description": "Step-by-step guide to connect the Counter app for Android to Home Assistant using webhooks, with a JSON payload example.",
       "image": "https://counterautomate.com/img/og-image.webp",
       "datePublished": "2026-06-19",
-      "dateModified": "2026-06-19",
+      "dateModified": "2026-11-20",
       "author": { "@type": "Organization", "name": "CounterAutomate", "url": "https://counterautomate.com/" },
       "publisher": { "@type": "Organization", "name": "CounterAutomate", "logo": { "@type": "ImageObject", "url": "https://counterautomate.com/img/logo.webp" } },
       "mainEntityOfPage": "https://counterautomate.com/home-assistant-counter.html"
@@ -122,11 +122,11 @@
   <p>Open Counter, tap the <strong>+</strong> button, and create the counter you want to track, for example "Water glasses" or "Pushups". Set the increment step and, if it helps, a maximum value.</p>
 
   <h2>Step 3: Add an Events &amp; Actions rule</h2>
-  <p>Open the counter, go to <strong>Events &amp; Actions</strong>, and add a rule. Pick the event that should fire the webhook:</p>
+  <p>Open the counter, go to <strong>What it does on its own</strong>, and add a rule. Pick the event that should fire the webhook:</p>
   <ul>
-    <li><strong>Reached Value</strong>: fire at an exact number.</li>
-    <li><strong>Reached Greater Value</strong>: fire at or above a threshold.</li>
-    <li><strong>Counter Updated</strong>: fire on every change.</li>
+    <li><strong>Reaches the value</strong>: fire at an exact number.</li>
+    <li><strong>Goes above</strong>: fire when the value is above a threshold (strictly greater, not equal).</li>
+    <li><strong>Changes</strong>: fire on every change.</li>
     <li><strong>A time-based event</strong>: fire on a schedule (every day, weekly, monthly, or every N minutes), regardless of the counter value.</li>
   </ul>
 
@@ -134,16 +134,16 @@
   <p>As the action, choose <strong>Webhook</strong> and fill in:</p>
   <ul>
     <li><strong>URL</strong>: your Home Assistant webhook URL from Step 1.</li>
-    <li><strong>Method</strong>: POST.</li>
-    <li><strong>Headers</strong>: <code>Content-Type: application/json</code> (optional).</li>
-    <li><strong>Body</strong>: a JSON payload that uses template variables.</li>
+    <li><strong>HTTP method</strong>: POST.</li>
+    <li><strong>Content-Type</strong>: <code>application/json</code> (the default).</li>
+    <li><strong>Payload template</strong>: a JSON payload that uses template variables.</li>
   </ul>
   <p>Example body:</p>
   <pre><code>{
-  "counter": "{{title}}",
-  "value": {{value}}
+  "counter": "${counter.title}",
+  "value": ${counter.value}
 }</code></pre>
-  <p>Counter replaces <code>{{title}}</code> and <code>{{value}}</code> with the live counter data when the webhook is sent.</p>
+  <p>Counter replaces <code>${counter.title}</code> and <code>${counter.value}</code> with the live counter data when the webhook is sent. Also available: <code>${counter.id}</code>, <code>${counter.unit}</code>, <code>${counter.step}</code>, <code>${counter.min}</code>, <code>${counter.max}</code> and <code>${timestamp}</code> (milliseconds).</p>
 
   <h2>Step 5: Test it</h2>
   <p>Increment the counter until the event condition is met. Home Assistant receives the webhook and runs your automation. If nothing happens, check the automation traces in Home Assistant and make sure the URL is reachable from your phone's network.</p>
@@ -165,6 +165,7 @@
       <a class="related-card" href="tasker-counter.html"><span>Guide</span><strong>Tasker &amp; Automate</strong></a>
       <a class="related-card" href="nfc-counter.html"><span>Guide</span><strong>NFC tags</strong></a>
       <a class="related-card" href="telegram-counter.html"><span>Guide</span><strong>Telegram</strong></a>
+      <a class="related-card" href="google-sheets-counter.html"><span>Guide</span><strong>Google Sheets</strong></a>
     </div>
   </div>
 

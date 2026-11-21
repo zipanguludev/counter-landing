@@ -49,7 +49,7 @@
       "description": "How to connect the Counter app for Android to Tasker, Automate, and MacroDroid using broadcast intents, in both directions.",
       "image": "https://counterautomate.com/img/og-image.webp",
       "datePublished": "2026-06-19",
-      "dateModified": "2026-06-19",
+      "dateModified": "2026-11-20",
       "author": { "@type": "Organization", "name": "CounterAutomate", "url": "https://counterautomate.com/" },
       "publisher": { "@type": "Organization", "name": "CounterAutomate", "logo": { "@type": "ImageObject", "url": "https://counterautomate.com/img/logo.webp" } },
       "mainEntityOfPage": "https://counterautomate.com/tasker-counter.html"
@@ -111,29 +111,31 @@
 
   <h2>Direction A: a counter triggers Tasker</h2>
   <ol class="steps">
-    <li>In Counter, open the counter and add a rule under <strong>What it does on its own</strong>. Pick an event (Reached Value, Counter Updated, or a time-based event like Every day at a time).</li>
-    <li>Choose the <strong>Broadcast Intent</strong> action. Counter sends a broadcast intent carrying the counter data (id, value, title) plus any custom extras you add.</li>
-    <li>In Tasker, create a <strong>Profile &gt; Event &gt; System &gt; Intent Received</strong> and set the action filter to match the broadcast.</li>
+    <li>In Counter, open the counter and add a rule under <strong>What it does on its own</strong>. Pick an event (Reaches the value, Changes, or a time-based event like "Every day at").</li>
+    <li>Choose the <strong>Broadcast Intent</strong> action. Counter sends a broadcast with the action <code>com.zipangulu.counter.ACTION_COUNTER_EVENT</code> (you can change it), carrying the counter data plus any custom extras you add.</li>
+    <li>In Tasker, create a <strong>Profile &gt; Event &gt; System &gt; Intent Received</strong> and set the action to the same string.</li>
     <li>Attach a Task that does what you want: toggle Bluetooth, send an SMS, launch an app, or call a web service.</li>
   </ol>
 
+  <p>The broadcast carries these extras: <code>counter_id</code>, <code>counter_title</code>, <code>counter_value</code>, <code>counter_step</code>, <code>counter_min</code>, <code>counter_max</code> and <code>timestamp</code>. Custom extras accept the variables <code>${counter.id}</code>, <code>${counter.title}</code> and <code>${counter.value}</code>.</p>
+
   <h2>Direction B: Tasker controls a counter</h2>
   <ol class="steps">
-    <li>In Counter, open <strong>Settings &gt; External Integration</strong> and enable it. Optionally set an authentication token.</li>
+    <li>In Counter, open <strong>Settings &gt; External integration</strong> and turn on <strong>External commands</strong>. Then open <strong>Security token</strong> and copy the token: it is required by default.</li>
     <li>In Tasker, use the <strong>Send Intent</strong> action with the action and extras below.</li>
   </ol>
   <pre><code>Action: com.zipangulu.counter.ACTION_EXTERNAL_COMMAND
 Extras:
   counter_id (long)   - required
   command (string)    - required: increment, decrement, reset, set_value
-  value (int)         - optional
+  value (long)        - optional
   auth_token (string) - if authentication is enabled</code></pre>
-  <p>For example, send the intent with <code>counter_id: 1</code> and <code>command: increment</code> to bump counter 1 by its step.</p>
+  <p>For example, in Tasker's Send Intent action set the extras <code>counter_id:1L</code>, <code>command:increment</code> and <code>auth_token:your-token</code> to bump counter 1 by its step. The <code>L</code> matters: <code>counter_id</code> and <code>value</code> are long numbers, and Tasker sends a plain <code>1</code> as an int, which Counter ignores.</p>
 
   <h2>Works with Automate and MacroDroid too</h2>
   <p>The same broadcast intents and commands work with Automate and MacroDroid. Use their "intent received" and "send intent" blocks in place of Tasker's.</p>
 
-  <div class="note"><strong>Note:</strong> Direction B needs the External Intent Receiver enabled. If you set an auth token, include it in every intent you send.</div>
+  <div class="note"><strong>Note:</strong> Direction B needs External commands enabled. The security token is required unless you turn it off in the Security token dialog: include it in every intent you send.</div>
 
   <h2>Things you can build</h2>
   <ul>
